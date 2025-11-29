@@ -1,55 +1,68 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report:
+Version change: None → 1.0.0
+List of modified principles:
+  - PRINCIPLE_1_NAME: "Accuracy and Technical Rigor"
+  - PRINCIPLE_2_NAME: "Clarity and Accessibility"
+  - PRINCIPLE_3_NAME: "Practical Application and Embodied Intelligence"
+  - PRINCIPLE_4_NAME: "Ethical Considerations"
+  - PRINCIPLE_5_NAME: "Content Structure and Flow"
+  - PRINCIPLE_6_NAME: "Technical Stack and Tools"
+Added sections: Project Vision and Goals, Content Guidelines, Hardware Context
+Removed sections: None
+Templates requiring updates:
+  - .specify/templates/plan-template.md: ⚠ pending
+  - .specify/templates/spec-template.md: ⚠ pending
+  - .specify/templates/tasks-template.md: ⚠ pending
+  - .specify/templates/commands/*.md: ⚠ pending
+Follow-up TODOs: None
+-->
+# Physical AI & Humanoid Robotics Textbook Constitution
+
+## Project Vision and Goals
+The primary vision of this project is to create a comprehensive textbook for teaching a course in Physical AI & Humanoid Robotics. This book aims to bridge the gap between digital AI and the physical world, enabling students to apply their AI knowledge to control humanoid robots in simulated and real-world environments. The textbook will serve as a foundational resource for a capstone quarter introducing Physical AI systems that function in reality and comprehend physical laws.
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Accuracy and Technical Rigor
+All content must be factually correct, up-to-date, and provide robust technical explanations for all covered technologies (ROS 2, Gazebo, Unity, NVIDIA Isaac, GPT models).
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Clarity and Accessibility
+The textbook will be written for students with a foundational understanding of AI, balancing technical depth with pedagogical clarity. Concepts should be explained in an understandable manner, with clear examples.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Practical Application and Embodied Intelligence
+Emphasize hands-on learning, practical application, and the principles of embodied intelligence. The content should focus on designing, simulating, and deploying humanoid robots for natural human interactions.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Ethical Considerations
+Integrate discussions on the ethical implications of AI and humanoid robotics, promoting responsible development and deployment.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Content Structure and Flow
+The textbook will follow a logical progression, starting from foundational concepts (Physical AI, ROS 2) and advancing to more complex topics (simulation, NVIDIA Isaac, humanoid design, conversational AI). Each section and chapter will contribute to achieving the defined learning outcomes.
 
-### [PRINCIPLE_6_NAME]
+### VI. Technical Stack and Tools
+The textbook will extensively cover and demonstrate the use of ROS 2, Gazebo, Unity, NVIDIA Isaac SDK/Sim/ROS, and GPT models, with Python as the primary programming language. URDF will be used for robot modeling.
 
+## Content Guidelines
+*   **Engaging Style:** Content must be fun, relatable, and use easy English with appropriate emojis to enhance student engagement.
+*   **Conciseness:** Paragraphs must be a maximum of 100 characters and list item explanations must be a maximum of 50 characters.
+*   **Code Examples:** Provide clear, concise, and functional code examples, primarily in Python, for ROS 2, NVIDIA Isaac, and GPT integrations. Code snippets will adhere to best practices for readability and maintainability.
+*   **Diagrams and Visualizations:** Utilize diagrams, illustrations, and visual aids to explain complex robotic architectures, algorithms, and simulation environments.
+*   **Terminology:** Maintain consistent terminology, formatting, and presentation style throughout the book.
+*   **Course Alignment:** Content will be directly aligned with the specified course modules and learning outcomes.
 
-[PRINCIPLE__DESCRIPTION]
+### VII. Engaging and Concise Communication
+Content must be fun, relatable, and use easy English with appropriate emojis. Paragraphs and list item explanations must be a maximum of 100 characters to ensure conciseness and student engagement.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
-
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
-
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
-
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+## Hardware Context
+The textbook acknowledges and will guide students through the demanding hardware requirements for Physical AI, including:
+*   High-Performance Workstations with NVIDIA RTX GPUs (e.g., RTX 4070 Ti or higher) for physics simulation, visual perception, and generative AI.
+*   Edge Computing Kits (e.g., NVIDIA Jetson Orin Nano/NX) for physical AI deployment and understanding resource constraints.
+*   Sensors such as Intel RealSense D435i/D455 (RGB-D cameras) and USB IMUs.
+*   Voice Interfaces like ReSpeaker USB Mic Array.
+*   Discussion of various robot lab options (Quadrupeds like Unitree Go2 Edu, Miniature Humanoids like Unitree G1/Robotis OP3, or "Premium" labs with Unitree G1 Humanoid).
+*   Consideration of cloud-native lab solutions (e.g., AWS RoboMaker, NVIDIA Omniverse Cloud) as alternatives to on-premise labs.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
+All PRs/reviews must verify compliance; Complexity must be justified; Use this constitution for runtime development guidance.
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
-
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.1 | **Ratified**: 2025-11-29 | **Last Amended**: 2025-11-29

@@ -1,0 +1,8 @@
+{
+  "label": "a",
+  "position": 10,
+  "link": {
+    "type": "generated-index",
+    "description": "abc"
+  }
+}

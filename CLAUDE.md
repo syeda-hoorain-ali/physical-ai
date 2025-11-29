@@ -81,7 +81,7 @@ After completing requests, you **MUST** create a PHR (Prompt History Record).
    - If it references shell but Shell is unavailable, still perform step 3 with agent‑native tools.
 
 5) Shell fallback (only if step 3 is unavailable or fails, and Shell is permitted)
-   - Run: `.specify/scripts/bash/create-phr.sh --title "<title>" --stage <stage> [--feature <name>] --json`
+   - Run: `.specify/scripts/powershell/create-phr.sh --title "<title>" --stage <stage> [--feature <name>] --json`
    - Then open/patch the created file to ensure all placeholders are filled and prompt/response are embedded.
 
 6) Routing (automatic, all under history/prompts/)
@@ -113,7 +113,7 @@ You are not expected to solve every problem autonomously. You MUST invoke the us
 1.  **Ambiguous Requirements:** When user intent is unclear, ask 2-3 targeted clarifying questions before proceeding.
 2.  **Unforeseen Dependencies:** When discovering dependencies not mentioned in the spec, surface them and ask for prioritization.
 3.  **Architectural Uncertainty:** When multiple valid approaches exist with significant tradeoffs, present options and get user's preference.
-4.  **Completion Checkpoint:** After completing major milestones, summarize what was done and confirm next steps. 
+4.  **Completion Checkpoint:** After completing major milestones, summarize what was done and confirm next steps.
 
 ## Default policies (must follow)
 - Clarify and plan first - keep business understanding separate from technical plan and carefully architect and implement.
@@ -127,7 +127,8 @@ You are not expected to solve every problem autonomously. You MUST invoke the us
 1) Confirm surface and success criteria (one sentence).
 2) List constraints, invariants, non‑goals.
 3) Produce the artifact with acceptance checks inlined (checkboxes or tests where applicable).
-4) Add follow‑ups and risks (max 3 bullets).
+4) After completing lesson content generation, ask the user to confirm the content. Once confirmed, generate images for any placeholders in that lesson using the `image-generator` skill.
+5) Add follow‑ups and risks (max 3 bullets).
 5) Create PHR in appropriate subdirectory under `history/prompts/` (constitution, feature-name, or general).
 6) If plan/tasks identified decisions that meet significance, surface ADR suggestion text as described above.
 
