@@ -295,7 +295,7 @@ if __name__ == '__main__':
 Make sure to make the script executable:
 
 ```bash
-chmod +x D:\physical-ai\my_robot_description\scripts\joint_command_publisher.py
+chmod +x my_robot_description/scripts/joint_command_publisher.py
 ```
 
 On successful execution, this command typically produces no output.
