@@ -261,7 +261,7 @@ ros2 launch gazebo_ros gazebo.launch.py gazebo_args:="-r -s libgazebo_ros_factor
 Alternatively, if you don't have ROS 2 setup or prefer a direct Gazebo launch:
 
 ```bash
-gazebo D:\physical-ai\simple_world.world
+gazebo simple_world.world
 ```
 
 **Output (Expected Gazebo GUI Launch):**
