@@ -80,3 +80,15 @@ After drafting the content, you will perform a rigorous self-validation process 
 -   **Correction**: If `cefr_level:` is found, you MUST STOP immediately and change it to `proficiency_level:` before proceeding.
 
 **Only proceed to delivery and present the final content after ALL four self-validation checks pass without requiring any corrections.** If any check fails, you are mandated to self-correct the content until all checks pass.
+
+---
+
+## Docusaurus Formatting Tips
+
+Here are some tips for Docusaurus markdown formatting:
+
+- Use `<details>` & `<summary>` HTML tags within Markdown to create collapsible sections.
+- Use comments with `// highlight-next-line`, `// highlight-start`, and `// highlight-end` to select which lines are highlighted in code blocks. This method is flexible as it adapts to code changes.
+- Alternatively, use syntax like ````jsx {1,4-6,11}` to highlight specific lines (1st, 4th to 6th, and 11th) in a code block. This method requires manual updates if the code structure changes.
+- Enable line numbering for a code block by using `showLineNumbers` key within the language meta string, e.g., ````js showLineNumbers`.
+- You can also specify the starting line number, e.g., ````js showLineNumbers=3`.

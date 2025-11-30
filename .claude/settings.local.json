@@ -33,13 +33,15 @@
       "Bash(powershell.exe:*)",
       "Bash(mkdir:*)",
       "Bash(mv:*)",
-      "Skill(image-generator)"
+      "Skill(image-generator)",
+      "Bash(git --version)",
+      "Bash(.specify/scripts/powershell/check-prerequisites.ps1:*)"
     ],
     "deny": [],
     "ask": []
   },
+  "enableAllProjectMcpServers": true,
   "enabledMcpjsonServers": [
     "context7"
-  ],
-  "enableAllProjectMcpServers": true
+  ]
 }

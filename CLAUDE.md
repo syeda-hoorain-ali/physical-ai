@@ -51,7 +51,7 @@ After completing requests, you **MUST** create a PHR (Prompt History Record).
 
 2a) Resolve route (all under history/prompts/)
   - `constitution` → `history/prompts/constitution/`
-  - Feature stages (spec, plan, tasks, red, green, refactor, explainer, misc) → `history/prompts/<feature-name>/` (requires feature context)
+  - Feature stages (spec, plan, tasks, red, green, refactor | explainer | misc) → `history/prompts/<feature-name>/` (requires feature context)
   - `general` → `history/prompts/general/`
 
 3) Prefer agent‑native flow (no shell)
@@ -209,3 +209,13 @@ Wait for consent; never auto-create ADRs. Group related decisions (stacks, authe
 
 ## Code Standards
 See `.specify/memory/constitution.md` for code quality, testing, performance, security, and architecture principles.
+
+## Docusaurus Formatting Tips
+
+Here are some tips for Docusaurus markdown formatting:
+
+- Use `<details>` & `<summary>` HTML tags within Markdown to create collapsible sections.
+- Use comments with `// highlight-next-line`, `// highlight-start`, and `// highlight-end` to select which lines are highlighted in code blocks. This method is flexible as it adapts to code changes.
+- Alternatively, use syntax like ````jsx {1,4-6,11}` to highlight specific lines (1st, 4th to 6th, and 11th) in a code block. This method requires manual updates if the code structure changes.
+- Enable line numbering for a code block by using `showLineNumbers` key within the language meta string, e.g., ````js showLineNumbers`.
+- You can also specify the starting line number, e.g., ````js showLineNumbers=3`.
