@@ -191,4 +191,4 @@ Your node is now updated! No code changes needed. 🎉
 
 Now it's your turn! Imagine a ROS 2 node called `/camera-node`.
 
-> **💬 AI Colearning Prompt**: What `ros2 param` command would you use to conceptually list all parameters for the `/camer-node`? What would be a command to set its `frame_rate` parameter to `30.0`? Explain why parameters are useful in one short sentence.
+> **💬 AI Colearning Prompt**: What `ros2 param` command would you use to conceptually list all parameters for the `/camera-node`? What would be a command to set its `frame_rate` parameter to `30.0`? Explain why parameters are useful in one short sentence.
