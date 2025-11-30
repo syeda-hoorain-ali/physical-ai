@@ -192,7 +192,7 @@ To see this in action:
 2.  **Save the launch file:** Save the `my_custom_launch.py` code to a file in the same directory, for example, `C:/Users/dell/Desktop/physical-ai/worktrees/chapter1/docs/01-ros2-fundamentals/my_custom_launch.py`.
 3.  **Install `launch_ros`**: If you haven't already, install the `launch_ros` package:
     ```bash
-    pip install ros-foxy-launch-ros # Or your ROS 2 distribution
+    pip install ros-humble-launch-ros # Or your ROS 2 distribution
 
 ```
 4.  **Run the launch file:**
