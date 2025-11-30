@@ -61,7 +61,7 @@ Here’s a snippet for integrating a basic camera:
         <argument>--ros-args --remap __tf:=tf</argument>
         <remap_subscriptions>true</remap_subscriptions>
       </ros>
-      <camer-name>camera_sensor</camer-name>
+      <camera_name>camera_sensor</camera_name>
       <frame_name>camera_link_optical</frame_name>
       <hack_baseline>0.07</hack_baseline>
     </plugin>
