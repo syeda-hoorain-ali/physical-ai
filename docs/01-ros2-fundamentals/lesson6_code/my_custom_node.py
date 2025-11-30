@@ -10,7 +10,7 @@ class MyCustomNode(Node):
 
     def timer_callback(self):
         msg = self.get_parameter('custom_message').get_parameter_value().string_value
-        self.get_logger().info('Node says: "%s"' % msg)
+        self.get_logger().info(f'Node says: "{msg}"')
 
 def main(args=None):
     rclpy.init(args=args)
