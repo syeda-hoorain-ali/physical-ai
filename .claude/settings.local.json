@@ -33,9 +33,14 @@
       "Bash(powershell.exe:*)",
       "Bash(mkdir:*)",
       "Bash(mv:*)",
-      "Skill(image-generator)"
+      "Skill(image-generator)",
+      "Bash(git --version)"
     ],
     "deny": [],
     "ask": []
-  }
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "context7"
+  ]
 }
