@@ -1,10 +1,4 @@
----
-sidebar_position: 1
-sidebar_label: 'Lesson 1: The Digital Twin: Robot Simulation Basics'
-slug: robot-simulation-basics
----
-
-# Lesson 1: The Digital Twin: Robot Simulation Basics
+# The Digital Twin: Robot Simulation Basics
 
 Welcome to Chapter 2! Get ready to dive into the exciting world of robot simulation. We're talking about building digital versions of robots! 🚀
 
