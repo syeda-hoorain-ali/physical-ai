@@ -34,9 +34,9 @@
       "Bash(mkdir:*)",
       "Bash(mv:*)",
       "Skill(image-generator)",
-      "Bash(git commit -m \"$(cat <<''EOF''\ndocs(ros2-fundamentals): Develop spec, plan, and tasks for chapter\n\nThis commit introduces the initial documentation artifacts for the \"ROS 2 Fundamentals: Building the Robotic Nervous System\" chapter. It includes:\n- High-level specifications (`spec.md`)\n- Detailed lesson plan (`plan.md`)\n- Actionable content creation tasks (`tasks.md`)\n\nThe `tasks.md` was also refined based on user feedback to focus solely on conceptual content creation rather than physical setup or robot development.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
       "Bash(git push:*)",
-      "Bash(git --version)"
+      "Bash(git --version)",
+      "Bash(.specify/scripts/powershell/check-prerequisites.ps1:*)"
     ],
     "deny": [],
     "ask": []
