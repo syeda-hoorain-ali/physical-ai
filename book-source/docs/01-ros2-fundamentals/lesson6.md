@@ -1,8 +1,10 @@
 ---
 sidebar_position: 6
-title: Streamlining ROS 2 with Launch Files
-proficiency_level: A2
+sidebar_label: 'Lesson 6: Streamlining ROS 2 with Launch Files'
+slug: streamlining-ros2-with-launch-files
 ---
+
+# Streamlining ROS 2 with Launch Files
 
 Managing many ROS 2 nodes can get tricky. You might have several programs working together. Launch files are here to make this much easier. They are like a conductor for your ROS 2 orchestra.
 
@@ -28,7 +30,7 @@ ROS 2 launch files are typically written in Python. This allows for powerful and
 
 Here is a simple launch file to start two nodes, a `talker` and a `listener`.
 
-```python
+```python title="my_launch_file.py"
 from launch import LaunchDescription
 from launch_ros.actions import Node
 
@@ -122,8 +124,7 @@ Let's create a simple Python node that says hello, but with a custom message set
 
 First, let's make our Python node. This node will look for a parameter called `custom_message`. If it finds it, it will print that message; otherwise, it will use a default message.
 
-```python
-# C:/Users/dell/Desktop/physical-ai/worktrees/chapter1/docs/01-ros2-fundamentals/my_custom_node.py
+```python title="my_custom_node.py"
 import rclpy
 from rclpy.node import Node
 
@@ -136,7 +137,7 @@ class MyCustomNode(Node):
 
     def timer_callback(self):
         msg = self.get_parameter('custom_message').get_parameter_value().string_value
-        self.get_logger().info('Node says: \"%s\"' % msg)
+        self.get_logger().info(f'Node says: "{msg}"')
 
 def main(args=None):
     rclpy.init(args=args)
@@ -149,10 +150,11 @@ if __name__ == '__main__':
     main()
 
 ```
-Output:
-```
 
-[INFO] [my_custom_node]: Node says: \"Hello from default!\"\n
+Output:
+
+```
+[INFO] [my_custom_node]: Node says: "Hello from default!"
 ```
 
 In this code:
@@ -163,8 +165,7 @@ In this code:
 
 Now, let's create a Python launch file to run `my_custom_node` and set its `custom_message` parameter.
 
-```python
-# C:/Users/dell/Desktop/physical-ai/worktrees/chapter1/docs/01-ros2-fundamentals/my_custom_launch.py
+```python title="my_custom_launch.py"
 from launch import LaunchDescription
 from launch_ros.actions import Node
 
@@ -188,29 +189,31 @@ Before running this, you'll need to replace `_this_package_name_` with the actua
 
 To see this in action:
 
-1.  **Save the node:** Save the `my_custom_node.py` code to a file in your workspace, for example, `C:/Users/dell/Desktop/physical-ai/worktrees/chapter1/docs/01-ros2-fundamentals/my_custom_node.py`.
-2.  **Save the launch file:** Save the `my_custom_launch.py` code to a file in the same directory, for example, `C:/Users/dell/Desktop/physical-ai/worktrees/chapter1/docs/01-ros2-fundamentals/my_custom_launch.py`.
+1.  **Save the node:** Save the `my_custom_node.py` code to a file in your workspace, for example, `your_project_name/my_custom_node.py`.
+2.  **Save the launch file:** Save the `my_custom_launch.py` code to a file in the same directory, for example, `your_project_name/my_custom_launch.py`.
 3.  **Install `launch_ros`**: If you haven't already, install the `launch_ros` package:
     ```bash
     pip install ros-humble-launch-ros # Or your ROS 2 distribution
-
 ```
+
 4.  **Run the launch file:**
     ```bash
-    ros2 launch C:/Users/dell/Desktop/physical-ai/worktrees/chapter1/docs/01-ros2-fundamentals/my_custom_launch.py
-
+    ros2 launch your_project_name/my_custom_launch.py
 ```
+
 Output:
-```
 
-[INFO] [my_greeting_node]: Node says: \"Greetings from the launch file!\"\n
+```
+[INFO] [my_greeting_node]: Node says: "Greetings from the launch file!"
 ```
 
 Notice how the `my_custom_node` now prints the message we provided in the launch file! This is the magic of parameters and launch files working together.
 
 ### 🧠 Explore More!
 
-*   What happens if you remove the `parameters` line from the launch file?\n*   How would you add another parameter to `my_custom_node`, for example, to control the `timer_period`?\n*   Can you imagine a scenario where parameters would be super useful for your robot?
+*   What happens if you remove the `parameters` line from the launch file?
+*   How would you add another parameter to `my_custom_node`, for example, to control the `timer_period`?
+*   Can you imagine a scenario where parameters would be super useful for your robot?
 
 ## Practice
 
@@ -218,7 +221,7 @@ You have previously developed a publisher/subscriber node and created a `my_robo
 
 Consider the following `my_robot.launch.py` file:
 
-```python
+```python title="my_robot.launch.py"
 from launch import LaunchDescription
 from launch_ros.actions import Node
 
