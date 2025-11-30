@@ -51,7 +51,7 @@ This XML structure defines the blueprint for your simulated environment, ready t
 
 Let's create a simple Gazebo world file. This will give you a hands-on feel for how these elements come together.
 
-1.  **Create a new `.world` file**: Name it `simple_world.world` in your project directory (e.g., `D:\physical-ai\simple_world.world`).
+1.  **Create a new `.world` file**: Name it `simple_world.world` in your project directory (e.g., `my_robot_pkg/worlds/simple_world.world`).
 2.  **Define a ground plane**: Every world needs a floor! This provides a surface for objects.
 3.  **Add basic lighting**: Let there be light! A sun light makes your world visible and realistic.
 4.  **Include simple walls or boundaries**: Create some simple boundaries to contain your robots.
