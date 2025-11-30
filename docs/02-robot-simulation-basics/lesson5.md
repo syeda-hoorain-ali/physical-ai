@@ -139,7 +139,7 @@ To use `ros2_control`, you need to:
 
 3.  **Create a controller configuration file**: This YAML file defines the specific controllers you want to load, such as joint position controllers. Create a file named `my_robot_controllers.yaml` in a `config` directory within your robot package.
 
-    ```yaml title="config\my_robotconfig\my_robot"
+```yaml title="config/my_robot_controllers.yaml"
     controller_manager:
       ros__parameters:
         update_rate: 100 # Hz
