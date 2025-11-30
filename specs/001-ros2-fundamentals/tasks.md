@@ -9,6 +9,15 @@ This document outlines the actionable tasks for developing the "ROS 2 Fundamenta
 
 ## Phase 1: Foundational Tasks
 
+- [x] T000 Create `_category_.json` file for `01-ros2-fundamentals` directory with schema: `{
+  "label": "ROS 2 Fundamentals",
+  "position": 2, # position in sidebar
+  "link": {
+    "type": "generated-index",
+    "description": "Core concepts and practical applications of ROS 2"
+  }
+}`
+
 - [ ] T001 Review `.specify/memory/constitution.md` for project principles and content standards
 - [ ] T002 Review chapter overview and ensure alignment with course goals
 
@@ -17,45 +26,45 @@ This document outlines the actionable tasks for developing the "ROS 2 Fundamenta
 *Goal: Learner understands the fundamental building blocks of a ROS 2 system.*
 *Independent Test: Learner can correctly identify and describe the roles of Nodes, Topics, Services, and Actions in a simple robotic scenario.*
 
-- [ ] T003 [US1] Develop introductory content explaining "Why ROS 2?" (evolution from ROS 1, benefits) in `docs/01-ros2-fundamentals/lesson1.md`
-- [ ] T004 [US1] Create diagrams illustrating ROS 2 architecture (DDS, RMW) in `docs/01-ros2-fundamentals/assets/architecture.png`
-- [ ] T005 [US1] Write clear definitions and analogies for Nodes, Topics, Services, Actions, and Parameters in `docs/01-ros2-fundamentals/lesson1.md`
-- [ ] T006 [US1] Develop a simple interactive quiz to check understanding of ROS 2 core concepts in `docs/01-ros2-fundamentals/lesson1.md`
-- [ ] T007 [US1] Integrate `ros2 param` CLI commands and parameter usage into Lesson 1 (e.g., demonstrating how to view/set parameters for existing nodes) in `docs/01-ros2-fundamentals/lesson1.md`
+- [x] T003 [US1] Develop introductory content explaining "Why ROS 2?" (evolution from ROS 1, benefits) in `docs/01-ros2-fundamentals/lesson1.md`
+- [x] T004 [US1] Create diagrams illustrating ROS 2 architecture (DDS, RMW) in `docs/01-ros2-fundamentals/assets/architecture.png`
+- [x] T005 [US1] Write clear definitions and analogies for Nodes, Topics, Services, Actions, and Parameters in `docs/01-ros2-fundamentals/lesson1.md`
+- [x] T006 [US1] Develop a simple interactive quiz to check understanding of ROS 2 core concepts in `docs/01-ros2-fundamentals/lesson1.md`
+- [x] T007 [US1] Integrate `ros2 param` CLI commands and parameter usage into Lesson 1 (e.g., demonstrating how to view/set parameters for existing nodes) in `docs/01-ros2-fundamentals/lesson1.md`
 
 ## Phase 3: User Story 2 - Develop Basic ROS 2 Python Applications (Priority: P1)
 
 *Goal: Learner can understand simple ROS 2 programs in Python for conceptual robot behaviors.*
 *Independent Test: Learner can analyze a Python ROS 2 package containing a publisher and a subscriber node and explain their communication.*
 
-- [ ] T008 [US2] Create content explaining Topics with illustrative examples (e.g., sensor data) in `docs/01-ros2-fundamentals/lesson2.md`
-- [ ] T009 [US2] Develop conceptual explanations for `ros2 topic` CLI commands (list, echo, pub, hz) in `docs/01-ros2-fundamentals/lesson2.md`
-- [ ] T010 [US2] Create content explaining Services with illustrative examples (e.g., robot arm control) in `docs/01-ros2-fundamentals/lesson2.md`
-- [ ] T011 [US2] Develop conceptual explanations for `ros2 service` CLI commands (list, call, find) in `docs/01-ros2-fundamentals/lesson2.md`
-- [ ] T012 [US2] Create content explaining Actions with illustrative examples (e.g., long-duration navigation) in `docs/01-ros2-fundamentals/lesson2.md`
-- [ ] T013 [US2] Develop conceptual explanations for `ros2 action` CLI commands (list, send_goal, feedback) in `docs/01-ros2-fundamentals/lesson2.md`
-- [ ] T014 [US2] Design a comparative activity for learners to choose the best communication mechanism for different scenarios in `docs/01-ros2-fundamentals/lesson2.md`
-- [ ] T015 [US2] Provide step-by-step conceptual instructions for creating a ROS 2 workspace in `docs/01-ros2-fundamentals/lesson3.md`
-- [ ] T016 [US2] Provide step-by-step conceptual instructions for creating a Python ROS 2 package in `docs/01-ros2-fundamentals/lesson3.md`
-- [ ] T017 [US2] Write example code for a simple `rclpy` publisher node in `docs/01-ros2-fundamentals/lesson3_code/publisher.py`
-- [ ] T018 [US2] Write example code for a simple `rclpy` subscriber node in `docs/01-ros2-fundamentals/lesson3_code/subscriber.py`
-- [ ] T019 [US2] Develop a conceptual exercise where learners analyze a publisher-subscriber pair that communicates in `docs/01-ros2-fundamentals/lesson3.md`
-- [ ] T020 [US2] Include conceptual troubleshooting tips for common `rclpy` programming issues in `docs/01-ros2-fundamentals/lesson3.md`
-- [ ] T021 [US2] Write example code for an `rclpy` service server in `docs/01-ros2-fundamentals/lesson4_code/service_server.py`
-- [ ] T022 [US2] Write example code for an `rclpy` service client in `docs/01-ros2-fundamentals/lesson4_code/service_client.py`
-- [ ] T023 [US2] Develop a conceptual exercise for analyzing a service server/client pair in `docs/01-ros2-fundamentals/lesson4.md`
-- [ ] T024 [US2] Write example code for an `rclpy` action server (including feedback and result handling) in `docs/01-ros2-fundamentals/lesson4_code/action_server.py`
-- [ ] T025 [US2] Write example code for an `rclpy` action client (including goal sending and feedback processing) in `docs/01-ros2-fundamentals/lesson4_code/action_client.py`
-- [ ] T026 [US2] Develop a conceptual exercise for analyzing an action server/client pair in `docs/01-ros2-fundamentals/lesson4.md`
-- [ ] T027 [US2] Provide a comparison of when to use Topics, Services, or Actions in Python code in `docs/01-ros2-fundamentals/lesson4.md`
+- [x] T008 [US2] Create content explaining Topics with illustrative examples (e.g., sensor data) in `docs/01-ros2-fundamentals/lesson2.md`
+- [x] T009 [US2] Develop conceptual explanations for `ros2 topic` CLI commands (list, echo, pub, hz) in `docs/01-ros2-fundamentals/lesson2.md`
+- [x] T010 [US2] Create content explaining Services with illustrative examples (e.g., robot arm control) in `docs/01-ros2-fundamentals/lesson2.md`
+- [x] T011 [US2] Develop conceptual explanations for `ros2 service` CLI commands (list, call, find) in `docs/01-ros2-fundamentals/lesson2.md`
+- [x] T012 [US2] Create content explaining Actions with illustrative examples (e.g., long-duration navigation) in `docs/01-ros2-fundamentals/lesson2.md`
+- [x] T013 [US2] Develop conceptual explanations for `ros2 action` CLI commands (list, send_goal, feedback) in `docs/01-ros2-fundamentals/lesson2.md`
+- [x] T014 [US2] Design a comparative activity for learners to choose the best communication mechanism for different scenarios in `docs/01-ros2-fundamentals/lesson2.md`
+- [x] T015 [US2] Provide step-by-step conceptual instructions for creating a ROS 2 workspace in `docs/01-ros2-fundamentals/lesson3.md`
+- [x] T016 [US2] Provide step-by-step conceptual instructions for creating a Python ROS 2 package in `docs/01-ros2-fundamentals/lesson3.md`
+- [x] T017 [US2] Write example code for a simple `rclpy` publisher node in `docs/01-ros2-fundamentals/lesson3_code/publisher.py`
+- [x] T018 [US2] Write example code for a simple `rclpy` subscriber node in `docs/01-ros2-fundamentals/lesson3_code/subscriber.py`
+- [x] T019 [US2] Develop a conceptual exercise where learners analyze a publisher-subscriber pair that communicates in `docs/01-ros2-fundamentals/lesson3.md`
+- [x] T020 [US2] Include conceptual troubleshooting tips for common `rclpy` programming issues in `docs/01-ros2-fundamentals/lesson3.md`
+- [x] T021 [US2] Write example code for an `rclpy` service server in `docs/01-ros2-fundamentals/lesson4_code/service_server.py`
+- [x] T022 [US2] Write example code for an `rclpy` service client in `docs/01-ros2-fundamentals/lesson4_code/service_client.py`
+- [x] T023 [US2] Develop a conceptual exercise for analyzing a service server/client pair in `docs/01-ros2-fundamentals/lesson4.md`
+- [x] T024 [US2] Write example code for an `rclpy` action server (including feedback and result handling) in `docs/01-ros2-fundamentals/lesson4_code/action_server.py`
+- [x] T025 [US2] Write example code for an `rclpy` action client (including goal sending and feedback processing) in `docs/01-ros2-fundamentals/lesson4_code/action_client.py`
+- [x] T026 [US2] Develop a conceptual exercise for analyzing an action server/client pair in `docs/01-ros2-fundamentals/lesson4.md`
+- [x] T027 [US2] Provide a comparison of when to use Topics, Services, or Actions in Python code in `docs/01-ros2-fundamentals/lesson4.md`
 
 ## Phase 4: User Story 3 - Describe a Robot using URDF (Priority: P2)
 
 *Goal: Learner can understand how to create a digital representation of a robot's physical structure.*
 *Independent Test: Learner can analyze a simple URDF file and accurately describe a basic robot arm or a humanoid limb with defined links and joints.*
 
-- [ ] T028 [US3] Create introductory content on URDF's role in robotics in `docs/01-ros2-fundamentals/lesson5.md`
-- [ ] T029 [US3] Provide examples of URDF structure, links, and joints in `docs/01-ros2-fundamentals/lesson5.md`
+- [x] T028 [US3] Create introductory content on URDF's role in robotics in `docs/01-ros2-fundamentals/lesson5.md`
+- [x] T029 [US3] Provide examples of URDF structure, links, and joints in `docs/01-ros2-fundamentals/lesson5.md`
 - [ ] T030 [US3] Develop a conceptual exercise for analyzing a simple URDF model (e.g., a two-link arm) in `docs/01-ros2-fundamentals/lesson5_code/simple_arm.urdf`
 - [ ] T031 [US3] Explain and demonstrate adding visual (mesh/geometry) and collision properties in `docs/01-ros2-fundamentals/lesson5.md`
 - [ ] T032 [US3] Briefly explain Xacro with a basic example in `docs/01-ros2-fundamentals/lesson5.md`
