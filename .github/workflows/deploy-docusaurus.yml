@@ -19,13 +19,12 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: |
-          cd book-source
-          npm ci
+        working-directory: book-source
+        run: npm ci
+
       - name: Build website
-        run: |
-          cd book-source
-          npm run build
+        working-directory: book-source
+        run: npm run build
 
       - name: Upload Build Artifact
         uses: actions/upload-pages-artifact@v3
