@@ -34,9 +34,7 @@ class FibonacciActionServer(Node):
     def handle_accepted_callback(self, goal_handle):
         """Start execution of a goal."""
         self.get_logger().info('Goal accepted. Starting execution...')
-        # Start a new thread or timer to execute the goal to avoid blocking
-        # the main executor. For simplicity, we'll just call execute_callback directly here.
-        self._execute_goal(goal_handle)
+        goal_handle.execute()
 
     def cancel_callback(self, goal_handle):
         """Accept or reject a client request to cancel an action."""
