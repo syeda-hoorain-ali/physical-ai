@@ -262,8 +262,8 @@ def generate_launch_description():
     return LaunchDescription([
         Node(
             package='camera_driver',
-            executable='camer-node',
-            name='my_camer-node'
+            executable='camera-node',
+            name='my_camera-node'
         ),
         Node(
             package='lidar_driver',
