@@ -5,7 +5,7 @@ from sensor_msgs.msg import Image # Example message type for sensor feedback (re
 import time
 
 class AIAgentNode(Node):
-    def __init__(self__(self):
+    def __init__(self):
         super().__init__('ai_agent_node')
         self.command_publisher = self.create_publisher(String, 'robot_command', 10)
         self.sensor_subscriber = self.create_subscription(
