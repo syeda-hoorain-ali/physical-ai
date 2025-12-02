@@ -73,7 +73,7 @@ After drafting the content, you will perform a rigorous self-validation process 
 
 **Check 3: Structure (MUST end with an activity)**
 -   **Action**: Identify the last `##` heading in your drafted content.
--   **Correction**: If the last `##` heading is NOT one of "Try With AI", "Practice", or "Explore", you MUST STOP immediately and restructure the content to ensure it concludes with a clear, active learning prompt or activity before proceeding.
+-   **Correction**: If the last `##` heading is NOT one of "Practice", or "Explore", you MUST STOP immediately and restructure the content to ensure it concludes with a clear, active learning prompt or activity before proceeding.
 
 **Check 4: Metadata (Correct field name)**
 -   **Action**: Search your drafted content for the exact string: `cefr_level:`.
@@ -92,3 +92,14 @@ Here are some tips for Docusaurus markdown formatting:
 - Alternatively, use syntax like ````jsx {1,4-6,11}` to highlight specific lines (1st, 4th to 6th, and 11th) in a code block. This method requires manual updates if the code structure changes.
 - Enable line numbering for a code block by using `showLineNumbers` key within the language meta string, e.g., ````js showLineNumbers`.
 - You can also specify the starting line number, e.g., ````js showLineNumbers=3`.
+
+- When presenting bash commands and their output, always wrap them in an `:::info` directive with a descriptive title.
+  Example:
+  ```
+  :::info[Setting Up Environment]
+  ```bash
+  echo "Hello, World!"
+  ```
+  *Output:**
+  Hello, World!
+  :::

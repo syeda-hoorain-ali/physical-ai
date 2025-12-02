@@ -65,7 +65,7 @@ if __name__ == '__main__':
 
 To run this server, you would typically use:
 
-:::info[]
+:::info[Running the Service Server]
 ```bash
 ros2 run <your_package_name> service_server
 ```
@@ -128,7 +128,7 @@ if __name__ == '__main__':
 
 To run this client and send a request (e.g., adding 2 and 3):
 
-:::inifo[]
+:::info[Running the Service Client]
 ```bash
 ros2 run <your_package_name> service_client 2 3
 ```
@@ -260,7 +260,7 @@ if __name__ == '__main__':
 
 To run this server:
 
-:::info[]
+:::info[Running the Action Server]
 ```bash
 ros2 run <your_package_name> action_server
 ```
@@ -353,7 +353,7 @@ if __name__ == '__main__':
 
 To run this client (ensure the server is running first):
 
-:::info[]
+:::info[Creating an Action Client]
 ```bash
 ros2 run <your_package_name> action_client
 ```

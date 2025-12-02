@@ -179,7 +179,7 @@ Role: 'Strategic oversight, contract validation', Gold (#fbbf24), Large hexagon.
 
 1. **Determine lesson file:**
    - Read creative brief's `Chapter` and `Lesson` metadata
-   - Target: `book-source/docs/[part]/[chapter]/[lesson-file].md`
+   - Target: `book-source/docs/[chapter]/[lesson-file].md`
 
 2. **Find insertion point:**
    - Search for concept explanation section related to this visual
@@ -188,7 +188,7 @@ Role: 'Strategic oversight, contract validation', Gold (#fbbf24), Large hexagon.
 
 3. **Insert reference:**
    ```markdown
-   ![{Alt text from creative brief}](/img/part-X/chapter-YY/{filename}.png)
+   ![{Alt text from creative brief}](/img/chapter-YY/{filename}.png)
    ```
 
 4. **Verify no code block interruption:**
@@ -272,7 +272,7 @@ Total: 18 visuals
 ✅ Generated: 16 (2K, avg 2-3 iterations)
 ⚠️ Deferred: 2 (quality issues after 3 tries)
 Time: ~45 min
-Location: book-source/static/img/part-{N}/chapter-{NN}/
+Location: book-source/static/img/chapter-{NN}/
 ```
 
 **Principle:** Autonomous execution without interruption = efficient batch processing
@@ -343,10 +343,10 @@ Location: book-source/static/img/part-{N}/chapter-{NN}/
 
 **If session ends mid-batch (token limit, context overflow):**
 
-**Create checkpoint file:** `history/visual-assets/checkpoints/part-{N}-checkpoint.md`
+**Create checkpoint file:** `history/visual-assets/checkpoints/chapter-{N}-checkpoint.md`
 
 ```markdown
-## Batch Status: Part {N}
+## Batch Status: Chapter {N}
 **Date:** 2025-11-24
 **Status:** INTERRUPTED at {X}/{Y} images
 

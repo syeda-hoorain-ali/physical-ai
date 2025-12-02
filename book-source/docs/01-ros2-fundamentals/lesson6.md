@@ -73,12 +73,14 @@ Let's break down what's happening in the example:
 
 To run a launch file, you use the `ros2 launch` command:
 
+:::info[Launch Your Application]
 ```bash
 ros2 launch my_package my_launch_file.py
 ```
 
 Output:
 This command will execute the specified launch file. It will then start all the nodes and apply all configurations defined within it.
+:::
 
 ## Exploring Node Parameters
 
@@ -192,28 +194,123 @@ To see this in action:
 1.  **Save the node:** Save the `my_custom_node.py` code to a file in your workspace, for example, `your_project_name/my_custom_node.py`.
 2.  **Save the launch file:** Save the `my_custom_launch.py` code to a file in the same directory, for example, `your_project_name/my_custom_launch.py`.
 3.  **Install `launch_ros`**: If you haven't already, install the `launch_ros` package:
+
     ```bash
     pip install ros-humble-launch-ros # Or your ROS 2 distribution
-```
+    ```
 
 4.  **Run the launch file:**
+    :::info[Run the Custom Launch File]
     ```bash
     ros2 launch your_project_name/my_custom_launch.py
-```
+    ```
 
-Output:
-
-```
-[INFO] [my_greeting_node]: Node says: "Greetings from the launch file!"
-```
+    Output:
+    ```
+    [INFO] [my_greeting_node]: Node says: "Greetings from the launch file!"
+    ```
+    :::
 
 Notice how the `my_custom_node` now prints the message we provided in the launch file! This is the magic of parameters and launch files working together.
+
+### 🔍 Inspecting Parameters with `ros2 param`
+
+While launch files are great for setting initial parameters, you can also inspect and even change parameters of running nodes using the `ros2 param` command-line interface (CLI) tools. This is very useful for debugging and runtime configuration!
+
+Some common `ros2 param` commands include:
+*   `ros2 param list`: Lists all parameters on all running nodes.
+*   `ros2 param get <node_name> <parameter_name>`: Gets the value of a specific parameter from a node.
+*   `ros2 param set <node_name> <parameter_name> <value>`: Sets the value of a specific parameter on a running node.
+
+**Example:**
+If you have `my_greeting_node` running from the launch file example, you could:
+```bash
+ros2 param list
+# Output might include: /my_greeting_node:
+#   custom_message
+ros2 param get /my_greeting_node custom_message
+# Output: String value is: Greetings from the launch file!
+ros2 param set /my_greeting_node custom_message "Hello from CLI!"
+ros2 param get /my_greeting_node custom_message
+# Output: String value is: Hello from CLI!
+```
+This shows how you can interact with parameters dynamically.
 
 ### 🧠 Explore More!
 
 *   What happens if you remove the `parameters` line from the launch file?
 *   How would you add another parameter to `my_custom_node`, for example, to control the `timer_period`?
 *   Can you imagine a scenario where parameters would be super useful for your robot?
+
+### 🔗 Including Other Launch Files
+
+For complex robotic systems, you'll often want to organize your launch configurations into smaller, reusable files. ROS 2 launch system allows you to include other launch files, making your system modular and easier to manage.
+
+This is super useful when you have a set of nodes that always go together (e.g., a camera driver and an image processing node). You can create a launch file just for them and then include it in a larger, top-level launch file.
+
+To include another launch file, you use the `IncludeLaunchDescription` action.
+
+**Example:**
+
+Let's say you have a `sensor_launch.py` that starts your camera and lidar nodes:
+
+```python title="sensor_launch.py"
+from launch import LaunchDescription
+from launch_ros.actions import Node
+
+def generate_launch_description():
+    return LaunchDescription([
+        Node(
+            package='camera_driver',
+            executable='camer-node',
+            name='my_camer-node'
+        ),
+        Node(
+            package='lidar_driver',
+            executable='lidar_node',
+            name='my_lidar_node'
+        ),
+    ])
+```
+
+Now, you can include this `sensor_launch.py` in your main `my_robot.launch.py`:
+
+```python title="my_robot_with_sensors.launch.py"
+from launch import LaunchDescription
+from launch.actions import IncludeLaunchDescription
+from launch.launch_description_sources import PythonLaunchDescriptionSource
+from ament_index_python.packages import get_package_share_directory
+import os
+
+def generate_launch_description():
+    # Get the path to your sensor_launch.py
+    sensor_launch_file = os.path.join(
+        get_package_share_directory('your_robot_package'), # Replace with your package name
+        'launch',
+        'sensor_launch.py'
+    )
+
+    return LaunchDescription([
+        # Include the sensor launch file
+        IncludeLaunchDescription(
+            PythonLaunchDescriptionSource([sensor_launch_file])
+        ),
+        # You can add other nodes here too!
+        Node(
+            package='robot_controller',
+            executable='movement_controller',
+            name='robot_movement_node'
+        ),
+    ])
+```
+
+In this example:
+*   `IncludeLaunchDescription`: This action tells the launch system to process another launch file.
+*   `PythonLaunchDescriptionSource`: This specifies that the launch file to include is a Python launch file.
+*   `ament_index_python.packages.get_package_share_directory`: This is a handy function to find the installation path of a ROS 2 package, making your launch files more portable.
+*   `os.path.join`: Used to construct the full path to the included launch file.
+
+By using `IncludeLaunchDescription`, you can build complex launch systems from modular components, making them much easier to manage and debug!
 
 ## Practice
 
