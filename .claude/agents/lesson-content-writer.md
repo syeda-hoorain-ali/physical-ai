@@ -100,6 +100,6 @@ Here are some tips for Docusaurus markdown formatting:
   ```bash
   echo "Hello, World!"
   ```
-  *Output:**
+  **Output:**
   Hello, World!
   :::
