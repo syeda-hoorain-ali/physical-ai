@@ -1,4 +1,4 @@
-# Chapter 03: 
+# Chapter 03: The AI Robot Brain (NVIDIA Isaac)
 
 Welcome, robot whisperers! 🤖 Ever wonder how robots get smart? This chapter dives into NVIDIA Isaac, the secret sauce for making robots think, see, and move.
 
