@@ -13,7 +13,7 @@
 ## Phase 2: Foundational Tasks
 
 - [x] T005 Review `.specify/memory/constitution.md` for project principles and content standards
-- [x] T006 Review chapter overview and estnsure alignment with course goals
+- [x] T006 Review chapter overview and ensure alignment with course goals
 
 
 ## Phase 3: User Story 1 - Understand Course Structure (Priority: P1)
