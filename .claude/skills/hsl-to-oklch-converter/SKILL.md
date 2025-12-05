@@ -25,7 +25,7 @@ To use this skill, follow these steps:
     - **For direct HSL input:**
         - Use the Playwright tool to type the HSL color value into the input field.
         - Use the Playwright tool to read the OKLCH output from the result field.
-        - **Format OKLCH Output:** If the OKLCH value is like `oklch(38.927493438 193.48 124.936836)`, truncate the7 numerical components to two decimal places (e.g., `oklch(38.92 193.48 124.93)`).
+        - **Format OKLCH Output:** If the OKLCH value is like `oklch(38.927493438 193.48 124.936836)`, truncate the numerical components to two decimal places (e.g., `oklch(38.92 193.48 124.93)`).
         - Return the OKLCH value to the user.
 
     - **For file input:**
