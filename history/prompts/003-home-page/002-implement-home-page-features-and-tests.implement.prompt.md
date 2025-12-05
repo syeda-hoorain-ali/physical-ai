@@ -24,7 +24,7 @@ files:
   - book-source/src/pages/index.tsx
   - book-source/src/components/HeroSection.tsx
   - .gitignore
-  - D:\physical-ai\specs\003-home-page\tasks.md
+  - specs/003-home-page/tasks.md
 tests:
   - tests/e2e/home-page.spec.ts
   - book-source/src/components/__tests__/MagicCardSection.test.tsx
