@@ -1,44 +1,29 @@
-import type { ReactNode } from 'react';
-import clsx from 'clsx';
-import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import Layout from '@theme/Layout';
-import HomepageFeatures from '@site/src/components/HomepageFeatures';
-import Heading from '@theme/Heading';
+import { Navbar } from "@site/src/components/navbar";
+import { ScrollVelocity } from "@site/src/components/ui/scroll-based-velocity";
+import { ChapterTimeline } from "@site/src/components/home-page-sections/chapter-timeline";
+import { HeroSection } from "@site/src/components/home-page-sections/hero-section";
+import { FeaturesSection } from "@site/src/components/home-page-sections/features-section";
+import { AnimatedListSection } from "@site/src/components/home-page-sections/animated-list-section";
+import { FooterCTASection } from "@site/src/components/home-page-sections/cta-section";
 
-import styles from './index.module.css';
 
-function HomepageHeader() {
-  const { siteConfig } = useDocusaurusContext();
+const HomePage = () => {
   return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
-      <div className="container">
-        <Heading as="h1" className="hero__title">
-          {siteConfig.title}
-        </Heading>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/introduction-to-physical-ai-and-embodied-intelligence">
-            Start Reading Book
-          </Link>
-        </div>
-      </div>
-    </header>
-  );
-}
+    <div className="dark min-h-screen bg-background">
+      <Navbar />
+      <HeroSection />
 
-export default function Home(): ReactNode {
-  const { siteConfig } = useDocusaurusContext();
-  return (
-    <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
-      <HomepageHeader />
-      <main>
-        <HomepageFeatures />
-      </main>
-    </Layout>
+      {/* Scroll Velocity Section */}
+      <section className="relative border-y border-border/30 bg-muted/30 py-4">
+        <ScrollVelocity text="Physical AI • Humanoid Robots • Embodied Intelligence" velocity={25} />
+      </section>
+
+      <FeaturesSection />
+      <AnimatedListSection />
+      <ChapterTimeline />
+      <FooterCTASection />
+    </div>
   );
-}
+};
+
+export default HomePage;

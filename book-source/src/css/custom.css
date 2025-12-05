@@ -4,28 +4,30 @@
  * work well for content-centric websites.
  */
 
- @tailwind base;
- @tailwind components;
- @tailwind utilities;
+@import "./globals.css";
 
 /* You can override the default Infima variables here. */
-/* Polar Night Palette: Deep Navy with Sophisticated Grays - Bold & Elegant */
+/* Physical AI & Humanoid Robots Textbook - Aqua Marine & Chartreuse Green Theme */
 :root {
-    /* Polar Night Primary Colors */
-    --polar-night-deep: #001f3f; /* Deep Navy */
-    --polar-night-charcoal: #111111; /* Dark Charcoal */
-    --polar-night-gray: #aaaaaa; /* Medium Gray */
-    --polar-night-light: #dddddd; /* Light Gray */
-    --polar-night-white: #ffffff; /* Pure White */
+    /* Aqua Marine & Chartreuse Green Primary Colors (HSL-based) */
+    --aqua-marine: hsl(174, 72%, 56%); /* Aqua Marine */
+    --aqua-marine-glow: hsl(174, 72%, 70%); /* Aqua Marine Glow */
+    --chartreuse-green: hsl(82, 84%, 55%); /* Chartreuse Green */
+    --chartreuse-glow: hsl(82, 84%, 70%); /* Chartreuse Glow */
+    --dark-bg: hsl(180, 15%, 5%); /* Dark Background */
+    --light-text: hsl(160, 100%, 95%); /* Light Text */
 
     /* Infima Color Mapping */
-    --ifm-color-primary: #001f3f;
-    --ifm-color-primary-dark: #001830;
-    --ifm-color-primary-darker: #001528;
-    --ifm-color-primary-darkest: #000f1f;
-    --ifm-color-primary-light: #002952;
-    --ifm-color-primary-lighter: #003366;
-    --ifm-color-primary-lightest: #004080;
+    --ifm-color-primary: var(--aqua-marine);
+    --ifm-color-primary-dark: hsl(174, 72%, 46%);
+    --ifm-color-primary-darker: hsl(174, 72%, 40%);
+    --ifm-color-primary-darkest: hsl(174, 72%, 30%);
+    --ifm-color-primary-light: hsl(174, 72%, 66%);
+    --ifm-color-primary-lighter: hsl(174, 72%, 76%);
+    --ifm-color-primary-lightest: hsl(174, 72%, 86%);
+
+    /* Secondary - Chartreuse */
+    --ifm-color-secondary: var(--chartreuse-green);
 
     --ifm-code-font-size: 95%;
     --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
@@ -33,22 +35,29 @@
     --ifm-font-family-base:
         -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
         system-ui, sans-serif;
+    
+    /* Background & Surface */
+    --ifm-background-color: hsl(180, 15%, 98%);
+    --ifm-background-surface-color: hsl(180, 15%, 95%);
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme="dark"] {
-    /* Dark Mode - Lighter variants for contrast */
-    --ifm-color-primary: #aaaaaa;
-    --ifm-color-primary-dark: #999999;
-    --ifm-color-primary-darker: #888888;
-    --ifm-color-primary-darkest: #666666;
-    --ifm-color-primary-light: #bbbbbb;
-    --ifm-color-primary-lighter: #cccccc;
-    --ifm-color-primary-lightest: #dddddd;
+    /* Dark Mode - Aqua Marine & Chartreuse Green with dark background */
+    --ifm-color-primary: var(--aqua-marine);
+    --ifm-color-primary-dark: hsl(174, 72%, 46%);
+    --ifm-color-primary-darker: hsl(174, 72%, 40%);
+    --ifm-color-primary-darkest: hsl(174, 72%, 30%);
+    --ifm-color-primary-light: hsl(174, 72%, 66%);
+    --ifm-color-primary-lighter: hsl(174, 72%, 76%);
+    --ifm-color-primary-lightest: hsl(174, 72%, 86%);
+
+    /* Secondary - Chartreuse */
+    --ifm-color-secondary: var(--chartreuse-green);
 
     --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.05);
-    --ifm-background-color: #111111;
-    --ifm-background-surface-color: #1a1a1a;
+    --ifm-background-color: hsl(180, 15%, 5%);
+    --ifm-background-surface-color: hsl(180, 20%, 8%);
 }
 
 /* Smooth scrolling */
@@ -109,7 +118,7 @@ pre code {
 .navbar__title {
     font-weight: 600;
     font-size: 1.1rem;
-    background: linear-gradient(135deg, #001f3f 0%, #003366 100%);
+    background: linear-gradient(135deg, hsl(174, 72%, 40%) 0%, hsl(174, 72%, 56%) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -118,13 +127,13 @@ pre code {
         system-ui, sans-serif;
 }
 
-/* Enhanced navbar title for dark mode - Polar Night branding */
+/* Enhanced navbar title for dark mode - Aqua Marine & Chartreuse branding */
 [data-theme="dark"] .navbar__title {
-    background: linear-gradient(135deg, #dddddd 0%, #aaaaaa 50%, #ffffff 100%);
+    background: linear-gradient(135deg, hsl(174, 72%, 56%) 0%, hsl(82, 84%, 55%) 50%, hsl(174, 72%, 70%) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-shadow: 0 0 20px rgba(221, 221, 221, 0.2);
+    text-shadow: 0 0 20px hsla(174, 72%, 56%, 0.2);
 }
 
 /* Navbar logo (book cover) styling */
@@ -339,16 +348,16 @@ pre code {
     left: 0;
     width: 40px;
     height: 3px;
-    background: linear-gradient(90deg, #aaaaaa 0%, #dddddd 100%);
+    background: linear-gradient(90deg, hsl(174, 72%, 56%) 0%, hsl(82, 84%, 55%) 100%);
     border-radius: 2px;
 }
 
 [data-theme="dark"] .footer__title {
-    color: #dddddd !important;
+    color: hsl(160, 100%, 95%) !important;
 }
 
 [data-theme="dark"] .footer__title::after {
-    background: linear-gradient(90deg, #aaaaaa 0%, #888888 100%);
+    background: linear-gradient(90deg, hsl(174, 72%, 56%) 0%, hsl(82, 84%, 55%) 100%);
 }
 
 /* Footer Link Items */
@@ -444,7 +453,7 @@ pre code {
 
 /* Enhanced Copyright with Brand Highlight */
 .footer__copyright strong {
-    background: linear-gradient(135deg, #dddddd 0%, #ffffff 100%);
+    background: linear-gradient(135deg, hsl(174, 72%, 56%) 0%, hsl(82, 84%, 55%) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -452,7 +461,7 @@ pre code {
 }
 
 [data-theme="dark"] .footer__copyright strong {
-    background: linear-gradient(135deg, #aaaaaa 0%, #dddddd 100%);
+    background: linear-gradient(135deg, hsl(174, 72%, 56%) 0%, hsl(82, 84%, 55%) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

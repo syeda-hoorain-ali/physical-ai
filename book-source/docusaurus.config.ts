@@ -35,6 +35,19 @@ const config: Config = {
     locales: ['en'],
   },
 
+  plugins: [
+    async function myPlugin(context, options) {
+      return {
+        name: "docusaurus-tailwindcss",
+        configurePostCss(postcssOptions) {
+          // Appends Tailwind CSS and AutoPrefixer.
+          postcssOptions.plugins.push(require("@tailwindcss/postcss"));
+          return postcssOptions;
+        },
+      };
+    },
+  ],
+
   presets: [
     [
       'classic',
@@ -67,18 +80,13 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'My Site',
-      logo: {
-        alt: 'My Site Logo',
-        src: 'img/logo.svg',
-      },
+      title: 'Physical AI Textbook',
+      // logo: {
+      //   alt: 'Physical AI Logo',
+      //   src: 'img/logo.svg',
+      // },
+      hideOnScroll: false,
       items: [
-        {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
-          position: 'left',
-          label: 'Book',
-        },
         {
           href: 'https://github.com/syeda-hoorain-ali/physical-ai',
           label: 'GitHub',
