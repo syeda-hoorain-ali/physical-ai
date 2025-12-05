@@ -30,7 +30,7 @@ As a prospective reader, I want to view the textbook's home page to get an overv
 
 **Acceptance Scenarios**:
 
-1.  **Given** I am on the textbook website, **When** I navigate to the home page, **Then** I see the main heading "Auroa Text" or "Sparkles Text".
+1.  **Given** I am on the textbook website, **When** I navigate to the home page, **Then** I see the main heading "Aurora Text" or "Sparkles Text".
 2.  **Given** I am on the textbook website, **When** I navigate to the home page, **Then** I see an "Interactive Hover Button" in the navbar.
 3.  **Given** I am on the textbook website, **When** I navigate to the home page, **Then** I see introductory text followed by a "start reading" button.
 4.  **Given** I am on the textbook website, **When** I navigate to the home page, **Then** I see the "Scroll Based Velocity" component on the first page.
