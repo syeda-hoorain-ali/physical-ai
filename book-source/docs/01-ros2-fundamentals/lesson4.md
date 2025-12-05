@@ -128,7 +128,7 @@ if __name__ == '__main__':
 
 To run this client and send a request (e.g., adding 2 and 3):
 
-:::inifo[]
+:::info[]
 ```bash
 ros2 run <your_package_name> service_client 2 3
 ```

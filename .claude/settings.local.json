@@ -36,7 +36,8 @@
       "Skill(image-generator)",
       "Bash(git push:*)",
       "Bash(git --version)",
-      "Bash(.specify/scripts/powershell/check-prerequisites.ps1:*)"
+      "Bash(.specify/scripts/powershell/check-prerequisites.ps1:*)",
+      "Bash(git rev-parse:*)"
     ],
     "deny": [],
     "ask": []

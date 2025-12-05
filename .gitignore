@@ -6,6 +6,9 @@
 .docusaurus
 .cache-loader
 
+# Production
+/build
+
 # Misc
 .DS_Store
 
@@ -34,3 +37,8 @@ yarn-error.log*
 
 .env
 test.md
+.vscode/
+.idea/
+*.tmp
+*.swp
+book-source/src/pages/index copy.tsx

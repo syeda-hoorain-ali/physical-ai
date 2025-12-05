@@ -16,7 +16,7 @@ You are required to complete a unified book project using Claude Code and Spec-K
 
 The future of AI extends beyond digital spaces into the physical world. This capstone quarter introduces Physical AI—AI systems that function in reality and comprehend physical laws. Students learn to design, simulate, and deploy humanoid robots capable of natural human interactions using ROS 2, Gazebo, and NVIDIA Isaac.
 
-* **Module 1: The Robotic Nervous System (ROS 2\)**
+* **Module 1: The Robotic Nervous System (ROS 2)**
   * Focus: Middleware for robot control.
   * ROS 2 Nodes, Topics, and Services.
   * Bridging Python Agents to ROS controllers using rclpy.
