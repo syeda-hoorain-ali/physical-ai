@@ -16,7 +16,7 @@ links:
   adr: null
   pr: null
 files:
- - D:/physical-ai/.claude/skills/hsl-to-oklch-converter/SKILL.md
+ - .claude/skills/hsl-to-oklch-converter/SKILL.md
 tests:
 null
 ---
