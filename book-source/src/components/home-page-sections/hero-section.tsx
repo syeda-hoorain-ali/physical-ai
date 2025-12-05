@@ -6,7 +6,7 @@ import { SparklesText } from "../ui/sparkles-text"
 
 export const HeroSection = () => {
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden pt-16" >
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden pt-16">
       <LightRays className="z-0" />
 
       {/* Background gradient */}
