@@ -80,7 +80,7 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'Physical AI Textbook ',
+      title: 'Physical AI Textbook',
       // logo: {
       //   alt: 'Physical AI Logo',
       //   src: 'img/logo.svg',
