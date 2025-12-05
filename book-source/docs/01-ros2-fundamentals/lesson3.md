@@ -16,7 +16,7 @@ Think of a ROS 2 workspace as your project's home base. It's where all your ROS 
 
 First up, let's make a new directory for your workspace. This keeps things tidy and organized!
 
-:::info[]
+:::info[Create Workspace Directory]
 ```bash
 mkdir -p ~/ros2_ws
 ```
@@ -33,7 +33,7 @@ mkdir -p ~/ros2_ws
 
 This directory will be the home for all your ROS 2 package source code.
 
-:::info[]
+:::info[Create `src` Directory]
 ```bash
 mkdir -p ~/ros2_ws/src
 ```
@@ -51,7 +51,7 @@ mkdir -p ~/ros2_ws/src
 Now, you would typically place your ROS 2 packages (either ones you've created or ones you've cloned from a repository) into this `src` directory.
 
 
-:::info[]
+:::info[Place Your ROS 2 Packages]
 ```bash
 # Example: If you have a package named 'my_package'
 # cp -r my_package ~/ros2_ws/src/
@@ -71,7 +71,7 @@ Now, you would typically place your ROS 2 packages (either ones you've created o
 
 After placing your packages, it's time to build them! This compiles your code and makes it ready for ROS 2 to use.
 
-:::info[]
+:::info[Build Your Workspace]
 ```bash
 cd ~/ros2_ws
 colcon build
@@ -95,7 +95,7 @@ _Note: Actual output will vary based on packages._
 
 This is a super important step! Sourcing the setup files tells your current shell where to find all the newly built ROS 2 packages and executables.
 
-:::info[]
+:::info[Source Your Setup Files]
 ```bash
 source install/setup.bash
 ```
@@ -124,7 +124,7 @@ It sets up a basic directory structure for your package. This saves you from cre
 
 Here's how you use it for a Python package:
 
-:::info[]
+:::info[Creating Your Package]
 ```bash
 ros2 pkg create --build-type ament_python my_python_package
 ```
