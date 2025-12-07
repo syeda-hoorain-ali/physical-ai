@@ -16,7 +16,7 @@ export const InteractiveHoverButton = ({
     <button
       onClick={onClick}
       className={cn(
-        "group relative inline-flex items-center gap-2 overflow-hidden rounded-full px-8 py-4 font-semibold transition-all duration-300",
+        "group relative inline-flex items-center gap-2 overflow-hidden rounded-full px-8 py-4 font-semibold transition-all duration-300 cursor-pointer",
         "bg-linear-to-r from-primary to-secondary text-primary-foreground",
         "hover:shadow-lg hover:shadow-primary/30",
         "animate-pulse-glow",

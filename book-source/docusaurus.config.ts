@@ -46,6 +46,13 @@ const config: Config = {
         },
       };
     },
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        fromExtensions: ['html'],
+        toExtensions: ['html'],
+      },
+    ],
   ],
 
   presets: [
@@ -87,6 +94,16 @@ const config: Config = {
       // },
       hideOnScroll: false,
       items: [
+        {
+          to: '/docs/introduction-to-physical-ai-and-embodied-intelligence',
+          label: 'Book',
+          position: 'left',
+        },
+        {
+          to: '/auth',
+          label: 'Sign Up/Login',
+          position: 'right',
+        },
         {
           href: 'https://github.com/syeda-hoorain-ali/physical-ai',
           label: 'GitHub',

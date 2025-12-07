@@ -10,12 +10,18 @@
 /* Physical AI & Humanoid Robots Textbook - Aqua Marine & Chartreuse Green Theme */
 :root {
     /* Aqua Marine & Chartreuse Green Primary Colors (HSL-based) */
-    --aqua-marine: hsl(174, 72%, 56%); /* Aqua Marine */
-    --aqua-marine-glow: hsl(174, 72%, 70%); /* Aqua Marine Glow */
-    --chartreuse-green: hsl(82, 84%, 55%); /* Chartreuse Green */
-    --chartreuse-glow: hsl(82, 84%, 70%); /* Chartreuse Glow */
-    --dark-bg: hsl(180, 15%, 5%); /* Dark Background */
-    --light-text: hsl(160, 100%, 95%); /* Light Text */
+    --aqua-marine: hsl(174, 72%, 56%);
+    /* Aqua Marine */
+    --aqua-marine-glow: hsl(174, 72%, 70%);
+    /* Aqua Marine Glow */
+    --chartreuse-green: hsl(82, 84%, 55%);
+    /* Chartreuse Green */
+    --chartreuse-glow: hsl(82, 84%, 70%);
+    /* Chartreuse Glow */
+    /* --dark-bg: hsl(180, 15%, 5%); */
+    /* Dark Background */
+    --light-text: hsl(160, 100%, 95%);
+    /* Light Text */
 
     /* Infima Color Mapping */
     --ifm-color-primary: var(--aqua-marine);
@@ -35,7 +41,7 @@
     --ifm-font-family-base:
         -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI",
         system-ui, sans-serif;
-    
+
     /* Background & Surface */
     --ifm-background-color: hsl(180, 15%, 98%);
     --ifm-background-surface-color: hsl(180, 15%, 95%);
@@ -44,13 +50,13 @@
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme="dark"] {
     /* Dark Mode - Aqua Marine & Chartreuse Green with dark background */
-    --ifm-color-primary: var(--aqua-marine);
-    --ifm-color-primary-dark: hsl(174, 72%, 46%);
-    --ifm-color-primary-darker: hsl(174, 72%, 40%);
-    --ifm-color-primary-darkest: hsl(174, 72%, 30%);
-    --ifm-color-primary-light: hsl(174, 72%, 66%);
-    --ifm-color-primary-lighter: hsl(174, 72%, 76%);
-    --ifm-color-primary-lightest: hsl(174, 72%, 86%);
+    --ifm-color-primary: hsl(174, 72%, 56%);
+    --ifm-color-primary-dark: hsl(174, 72%, 50%);
+    --ifm-color-primary-darker: hsl(174, 72%, 48%);
+    --ifm-color-primary-darkest: hsl(174, 72%, 39%);
+    --ifm-color-primary-light: hsl(174, 72%, 62%);
+    --ifm-color-primary-lighter: hsl(174, 72%, 65%);
+    --ifm-color-primary-lightest: hsl(173, 72%, 73%);
 
     /* Secondary - Chartreuse */
     --ifm-color-secondary: var(--chartreuse-green);
@@ -97,21 +103,24 @@ pre code {
     backdrop-filter: blur(10px);
     position: relative;
     z-index: 100;
+    padding-inline: 1rem;
 }
 
 [data-theme="dark"] .navbar {
     /* Polar Night header - dark charcoal with subtle transparency */
-    background: linear-gradient(
-        180deg,
-        rgba(17, 17, 17, 0.98) 0%,
-        rgba(26, 26, 26, 0.95) 100%
-    );
+    background: linear-gradient(180deg,
+            rgba(17, 17, 17, 0.98) 0%,
+            rgba(26, 26, 26, 0.95) 100%);
     box-shadow:
         0 2px 12px rgba(0, 0, 0, 0.4),
         0 1px 3px rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
     border-bottom: 1px solid rgba(170, 170, 170, 0.08);
+}
+
+.navbar__items {
+    gap: 1rem;
 }
 
 /* Navbar brand title styling */
@@ -144,11 +153,9 @@ pre code {
 
 /* Navbar CTA button */
 .navbar-cta-button {
-    background: linear-gradient(
-        135deg,
-        var(--ifm-color-primary) 0%,
-        var(--ifm-color-primary-dark) 100%
-    ) !important;
+    background: linear-gradient(135deg,
+            var(--ifm-color-primary) 0%,
+            var(--ifm-color-primary-dark) 100%) !important;
     color: white !important;
     padding: 0.75rem 1.25rem !important;
     border-radius: 50px !important;
@@ -182,6 +189,9 @@ pre code {
 /* Navbar links */
 .navbar__item {
     font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
 }
 
 /* Card backgrounds */
@@ -201,12 +211,10 @@ pre code {
 
 /* Footer Container - LIGHT MODE: Much darker navy for clear separation */
 .footer {
-    background: linear-gradient(
-        180deg,
-        #001428 0%,
-        #000f1f 50%,
-        #000a15 100%
-    ) !important;
+    background: linear-gradient(180deg,
+            #001428 0%,
+            #000f1f 50%,
+            #000a15 100%) !important;
     border-top: 1px solid rgba(170, 170, 170, 0.2) !important;
     padding: 4rem 2rem 2rem !important;
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.15);
@@ -223,21 +231,17 @@ pre code {
     right: 0;
     bottom: 0;
     background-image:
-        radial-gradient(
-            circle at 20% 50%,
+        radial-gradient(circle at 20% 50%,
             rgba(170, 170, 170, 0.03) 0%,
-            transparent 50%
-        ),
-        radial-gradient(
-            circle at 80% 80%,
+            transparent 50%),
+        radial-gradient(circle at 80% 80%,
             rgba(221, 221, 221, 0.02) 0%,
-            transparent 50%
-        );
+            transparent 50%);
     pointer-events: none;
     z-index: 0;
 }
 
-.footer > * {
+.footer>* {
     position: relative;
     z-index: 1;
 }
@@ -250,53 +254,43 @@ pre code {
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(
-        90deg,
-        transparent 0%,
-        rgba(170, 170, 170, 0.3) 10%,
-        rgba(221, 221, 221, 0.4) 50%,
-        rgba(170, 170, 170, 0.3) 90%,
-        transparent 100%
-    );
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(170, 170, 170, 0.3) 10%,
+            rgba(221, 221, 221, 0.4) 50%,
+            rgba(170, 170, 170, 0.3) 90%,
+            transparent 100%);
     opacity: 1;
     z-index: 1;
 }
 
 /* DARK MODE: Charcoal footer for contrast */
 [data-theme="dark"] .footer {
-    background: linear-gradient(
-        180deg,
-        #1a1a1a 0%,
-        #111111 50%,
-        #0a0a0a 100%
-    ) !important;
+    background: linear-gradient(180deg,
+            #1a1a1a 0%,
+            #111111 50%,
+            #0a0a0a 100%) !important;
     border-top: 1px solid rgba(170, 170, 170, 0.12) !important;
     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
 }
 
 [data-theme="dark"] .footer::after {
     background-image:
-        radial-gradient(
-            circle at 20% 50%,
+        radial-gradient(circle at 20% 50%,
             rgba(170, 170, 170, 0.02) 0%,
-            transparent 50%
-        ),
-        radial-gradient(
-            circle at 80% 80%,
+            transparent 50%),
+        radial-gradient(circle at 80% 80%,
             rgba(221, 221, 221, 0.015) 0%,
-            transparent 50%
-        );
+            transparent 50%);
 }
 
 [data-theme="dark"] .footer::before {
-    background: linear-gradient(
-        90deg,
-        transparent 0%,
-        rgba(170, 170, 170, 0.2) 10%,
-        rgba(170, 170, 170, 0.3) 50%,
-        rgba(170, 170, 170, 0.2) 90%,
-        transparent 100%
-    );
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(170, 170, 170, 0.2) 10%,
+            rgba(170, 170, 170, 0.3) 50%,
+            rgba(170, 170, 170, 0.2) 90%,
+            transparent 100%);
 }
 
 /* Footer Links Container */
@@ -323,6 +317,7 @@ pre code {
         flex-direction: column;
         gap: 2rem;
     }
+
     .footer__col {
         max-width: unset;
         min-width: 0;
@@ -509,37 +504,48 @@ pre code {
     vertical-align: middle;
     transition: color 0.3s;
 }
+
 .footer__link-social .footer-social-icon.youtube {
     color: #ff0000;
 }
+
 .footer__link-social .footer-social-icon.linkedin {
     color: #0077b5;
 }
+
 .footer__link-social .footer-social-icon.instagram {
     color: #e1306c;
 }
+
 .footer__link-social .footer-social-icon.facebook {
     color: #1877f3;
 }
+
 .footer__link-social .footer-social-icon.github {
     color: #181717;
 }
+
 /* Vibrant color even on dark mode */
 [data-theme="dark"] .footer__link-social .footer-social-icon.youtube {
     color: #ff3c3c;
 }
+
 [data-theme="dark"] .footer__link-social .footer-social-icon.linkedin {
     color: #2997f7;
 }
+
 [data-theme="dark"] .footer__link-social .footer-social-icon.instagram {
     color: #ff68a3;
 }
+
 [data-theme="dark"] .footer__link-social .footer-social-icon.facebook {
     color: #3b93f7;
 }
+
 [data-theme="dark"] .footer__link-social .footer-social-icon.github {
     color: #f3f3f3;
 }
+
 /* Add some hover flair */
 .footer__link-social:hover .footer-social-icon {
     filter: brightness(1.1) drop-shadow(0 0 6px rgba(0, 0, 0, 0.12));
@@ -611,6 +617,7 @@ pre code {
 
 /* Global touch target enforcement for mobile */
 @media screen and (max-width: 768px) {
+
     /* All buttons and links */
     button,
     a[role="button"],
@@ -672,24 +679,32 @@ pre code {
 
 /* Ensure mobile sidebar appears above all content */
 @media (max-width: 996px) {
+
     /* Docusaurus navbar sidebar for mobile */
     .navbar-sidebar {
         z-index: 1000 !important;
-        height: 100vh !important;  /* Expand to full viewport height */
-        max-height: 100vh !important;  /* Ensure it doesn't exceed viewport */
-        width: 100% !important;  /* Full viewport width */
-        right: 0 !important;  /* Flush to the right edge */
-        background-color: var(--ifm-navbar-background-color) !important;  /* Match navbar bg */
+        height: 100vh !important;
+        /* Expand to full viewport height */
+        max-height: 100vh !important;
+        /* Ensure it doesn't exceed viewport */
+        width: 100% !important;
+        /* Full viewport width */
+        right: 0 !important;
+        /* Flush to the right edge */
+        background-color: var(--ifm-navbar-background-color) !important;
+        /* Match navbar bg */
         background: linear-gradient(180deg, var(--ifm-navbar-background-color) 0%, var(--ifm-background-color) 100%) !important;
         overflow-y: auto !important;
         overflow-x: hidden !important;
-        -webkit-overflow-scrolling: touch !important;  /* Smooth scrolling on iOS */
+        -webkit-overflow-scrolling: touch !important;
+        /* Smooth scrolling on iOS */
     }
 
     /* Backdrop behind the mobile menu */
     .navbar-sidebar__backdrop {
         z-index: 999 !important;
-        background-color: rgba(0, 0, 0, 0.5) !important;  /* Semi-transparent dark overlay */
+        background-color: rgba(0, 0, 0, 0.5) !important;
+        /* Semi-transparent dark overlay */
     }
 
     /* Light mode: Darker backdrop for better visibility and contrast */
@@ -698,12 +713,12 @@ pre code {
     }
 
     /* When sidebar is open (navbar--show class present), hide main content */
-    .navbar--fixed-top.navbar-sidebar--show ~ .main-wrapper {
+    .navbar--fixed-top.navbar-sidebar--show~.main-wrapper {
         display: none !important;
     }
 
     /* Also hide footer when sidebar is open to prevent content overlap */
-    .navbar--fixed-top.navbar-sidebar--show ~ footer {
+    .navbar--fixed-top.navbar-sidebar--show~footer {
         display: none !important;
     }
 }
