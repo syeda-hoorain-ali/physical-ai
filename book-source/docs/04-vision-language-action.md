@@ -1,3 +1,9 @@
+---
+sidebar_position: 5
+label: Vision-Language-Action
+slug: vision-language-action
+---
+
 # Chapter 04: Vision-Language-Action
 
 Ever wonder how robots can be more than just pre-programmed machines? 🤔 We're talking about robots that *see*, *understand*, and *act* on their own!

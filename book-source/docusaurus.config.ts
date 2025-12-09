@@ -85,6 +85,7 @@ const config: Config = {
       //   alt: 'Physical AI Logo',
       //   src: 'img/logo.svg',
       // },
+      style: "primary",
       hideOnScroll: false,
       items: [
         {
@@ -104,15 +105,23 @@ const config: Config = {
               label: 'Book',
               to: '/docs/introduction-to-physical-ai-and-embodied-intelligence',
             },
-          ],
-        },
-        {
-          title: 'More',
-          items: [
             {
               label: 'GitHub',
               href: 'https://github.com/syeda-hoorain-ali/physical-ai',
             },
+          ],
+        },
+        {
+          title: 'Social Media',
+          items: [
+            {
+              label: 'LinkedIn',
+              href: 'https://linkedin.com/in/syedahoorainali8',
+            },
+            {
+              label: 'X',
+              href: 'https://x.com/syedahorainali',
+            }
           ],
         },
       ],
