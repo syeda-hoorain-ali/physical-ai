@@ -16,10 +16,6 @@ class Config(BaseSettings):
     # Neon database settings
     neon_database_url: str
 
-    # Server settings
-    HOST: str = "0.0.0.0"
-    PORT: int = 8000
-
     # Logging settings
     LOG_LEVEL: str = "INFO"
 
@@ -27,6 +23,7 @@ class Config(BaseSettings):
     RATE_LIMIT_REQUESTS: int = 100
     RATE_LIMIT_WINDOW: int = 3600  # in seconds
 
+    FRONTEND_BASE_URL: str
 
     def initialize_gemini_model(self):
         gemini_client = AsyncOpenAI(api_key=self.gemini_api_key, base_url=self.gemini_base_url)

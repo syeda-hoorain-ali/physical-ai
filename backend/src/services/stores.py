@@ -1,3 +1,4 @@
+from datetime import datetime
 import asyncpg
 from typing import Optional, List, Dict, Any
 import uuid
@@ -307,7 +308,7 @@ class NeonStores(Store[dict]):
             await connection.execute("""
                 INSERT INTO messages (id, thread_id, content, sender_type, timestamp)
                 VALUES ($1, $2, $3, $4, $5)
-            """, item.id, thread_id, content, sender_type, item.created_at or "NOW()")
+            """, item.id, thread_id, content, sender_type, item.created_at or datetime.now())
 
     async def save_item(self, thread_id: str, item: ThreadItem, context: dict) -> None:
         """

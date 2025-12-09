@@ -63,10 +63,16 @@ server = CustomChatKitServer(
 # Initialize FastAPI app
 app = FastAPI(title="Your ChatKit Application")
 
+origins = [
+    "http://localhost",
+    "http://localhost:3000",
+    "http://localhost:5173",
+]
+
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Configure appropriately for production
+    allow_origins=origins,  # Configure appropriately for production
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -89,45 +95,6 @@ async def health():
     Health check endpoint to verify the service is running.
     """
     return {"status": "ok", "model": "your-model-name"}
-
-@app.get("/debug/threads")
-async def debug_threads():
-    """
-    Debug endpoint to view all stored threads from database.
-    NOTE: This should be protected in production environments.
-    """
-    try:
-        # Load all threads from the database
-        page_of_threads = await stores.load_threads(limit=100, after=None, order="asc", context={})
-
-        result = {}
-        for thread in page_of_threads.data:
-            # Get messages for each thread
-            messages = await stores.get_thread_messages(thread.id)
-
-            result[thread.id] = {
-                "thread": {
-                    "id": thread.id,
-                    "created_at": str(thread.created_at),
-                    "title": thread.title
-                },
-                "messages": messages,
-                "message_count": len(messages)
-            }
-
-        return result
-    except Exception as e:
-        logger.error(f"Error in debug_threads endpoint: {e}")
-        return {"error": str(e)}
-
-# Optional: Serve frontend if it exists
-# from pathlib import Path
-# from fastapi.staticfiles import StaticFiles
-#
-# ROOT_DIR = Path(__file__).resolve().parent.parent
-# FRONTEND_DIR = ROOT_DIR / "frontend" / "dist"
-# if FRONTEND_DIR.exists():
-#     app.mount("/", StaticFiles(directory=str(FRONTEND_DIR), html=True), name="frontend")
 
 if __name__ == "__main__":
     import uvicorn

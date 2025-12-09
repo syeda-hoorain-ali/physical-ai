@@ -9,6 +9,11 @@ const config: Config = {
   tagline: 'Bridging the gap between AI and the physical world',
   favicon: 'img/favicon.ico',
 
+  customFields: {
+    apiBaseUrl: process.env.API_BASE_URL,
+    domainKey: process.env.API_DOMAIN_KEY,
+  },
+  
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
     v4: true, // Improve compatibility with the upcoming Docusaurus v4

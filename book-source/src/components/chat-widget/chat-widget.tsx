@@ -1,10 +1,13 @@
 import { ChatKit, useChatKit } from '@openai/chatkit-react'
 import { useState, useEffect, Activity } from 'react'
 import { MessageCircle, X, RefreshCw } from 'lucide-react'
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 
 export const ChatWidget = () => {
-  const baseUrl = process.env.BASE_URL || "http://127.0.0.1:8000"
-  const domainKey = process.env.DOMAIN_KEY || "127.0.0.1"
+
+  const { siteConfig: { customFields } } = useDocusaurusContext()
+  const baseUrl = (customFields.apiBaseUrl as string) || "http://127.0.0.1:8000"
+  const domainKey = (customFields.domainKey as string) || "127.0.0.1"
 
   const [initialThread, setInitialThread] = useState<string | null>(null)
   const [isReady, setIsReady] = useState(false)

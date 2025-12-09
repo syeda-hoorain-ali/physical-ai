@@ -39,7 +39,7 @@ The client connects to the backend in this way:
 ### Complete ChatKit Widget Template:
 ```tsx
 import { ChatKit, useChatKit } from '@openai/chatkit-react'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Activity } from 'react'
 import { MessageCircle, X, RefreshCw } from 'lucide-react'
 import { cn } from '@site/src/lib/utils'  // Adjust import path as needed
 
@@ -52,7 +52,6 @@ export const ChatWidget = () => {
   useEffect(() => {
     const savedThread = localStorage.getItem('chatkit-thread-id')
     setInitialThread(savedThread)
-    setIsReady(true)
   }, [])
 
   const { control } = useChatKit({
@@ -99,16 +98,7 @@ export const ChatWidget = () => {
     {!isChatOpen && (
       <button
         onClick={() => setIsChatOpen(true)}
-        className={cn(
-          "fixed bottom-6 right-6 z-50",
-          "w-14 h-14 rounded-full",
-          "bg-linear-to-br from-primary to-secondary",  // Adjust colors as needed
-          "flex items-center justify-center",
-          "shadow-lg shadow-primary/30",
-          "transition-all duration-300 ease-out",
-          "hover:scale-110 hover:shadow-xl hover:shadow-primary/40",
-          "animate-pulse-glow"  // Add custom animation if desired
-        )}
+        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-linear-to-br from-primary to-secondary flex items-center justify-center shadow-lg shadow-primary/30 transition-all duration-300 ease-out hover:scale-110 hover:shadow-xl hover:shadow-primary/40 animate-pulse-glow cursor-pointer"
         aria-label="Open chat"
       >
         <MessageCircle className="w-6 h-6 text-primary-foreground" />
@@ -116,74 +106,56 @@ export const ChatWidget = () => {
     )}
 
     {/* Chat Popup */}
-    {isChatOpen && (
-      <>
-        {/* Backdrop */}
-        <div
-          onClick={() => setIsChatOpen(false)}
-          className="fixed inset-0 bg-background/60 backdrop-blur-sm z-999"
-        />
+    <Activity mode={isChatOpen ? "visible" : "hidden"}>
+      {/* Backdrop */}
+      <div
+        onClick={() => setIsChatOpen(false)}
+        className="fixed inset-0 bg-background/60 backdrop-blur-sm z-999"
+      />
 
-        {/* Popup Window */}
-        <div
-          className={cn(
-            "fixed bottom-6 right-6 z-1000",
-            "w-[420px] h-[600px]",
-            "max-w-[calc(100vw-3rem)] max-h-[calc(100vh-3rem)]",
-            "bg-card border border-border",
-            "rounded-2xl shadow-2xl shadow-primary/20",
-            "flex flex-col overflow-hidden",
-            "animate-slide-in-up"  // Add custom animation if desired
-          )}
-        >
-          {/* Chat Header */}
-          <div className="px-4 py-3 bg-muted border-b border-border flex justify-between items-center shrink-0">
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-secondary animate-pulse" />
-              <span className="text-primary font-semibold text-sm">
-                Your Assistant Name
-              </span>
-            </div>
-            <div className="flex gap-2">
-              <button
-                onClick={() => {
-                  localStorage.removeItem('chatkit-thread-id')
-                  window.location.reload()
-                }}
-                className={cn(
-                  "px-3 py-1.5 rounded-lg",
-                  "bg-primary/20 hover:bg-primary/30",
-                  "text-primary text-xs font-medium",
-                  "flex items-center gap-1.5",
-                  "transition-colors duration-200"
-                )}
-              >
-                <RefreshCw className="w-3 h-3" />
-                New Chat
-              </button>
-              <button
-                onClick={() => setIsChatOpen(false)}
-                className={cn(
-                  "p-1.5 rounded-lg",
-                  "text-muted-foreground hover:text-foreground",
-                  "hover:bg-muted",
-                  "transition-colors duration-200"
-                )}
-                aria-label="Close chat"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            </div>
+      {/* Popup Window */}
+      <div className="fixed bottom-6 right-6 z-1000 w-105 h-150 max-w-[calc(100vw-3rem)] max-h-[calc(100vh-3rem)] bg-card border border-border rounded-2xl shadow-2xl shadow-primary/20 flex flex-col overflow-hidden animate-slide-in-up">
+        {/* Chat Header */}
+        <div className="px-4 py-3 bg-muted border-b border-border flex justify-between items-center shrink-0">
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 rounded-full bg-secondary animate-pulse" />
+            <span className="text-primary font-semibold text-sm">
+              Physical AI Assistant
+            </span>
           </div>
 
-          {/* Chat Content */}
-          <div className="flex-1 overflow-hidden chatkit-container">
-            <ChatKit control={control} className="h-full w-full" />
+          <div className="flex gap-2">
+            <button
+              onClick={() => {
+                localStorage.removeItem('chatkit-thread-id')
+              }}
+              className="px-3 py-1.5 rounded-lg bg-primary/20 hover:bg-primary/30 text-primary text-xs font-medium flex items-center gap-1.5 transition-colors duration-200"
+            >
+              <RefreshCw className="w-3 h-3" />
+              New Chat
+            </button>
+            <button
+              onClick={() => setIsChatOpen(false)}
+              className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors duration-200"
+              aria-label="Close chat"
+            >
+              <X className="w-4 h-4" />
+            </button>
           </div>
         </div>
-      </>
-    )}
-  </>)
+
+        {/* Chat Content */}
+        <div className="flex-1 overflow-hidden chatkit-container">
+          <Activity mode={isReady ? "hidden" : "visible"}>
+            <div className="h-full w-full flex items-center justify-center text-muted-foreground text-sm">
+              Connecting to assistant...
+            </div>
+          </Activity>
+          <ChatKit control={control} ref={ref} className="h-full w-full" />
+        </div>
+      </div>
+    </Activity>
+  </>);
 }
 
 export default ChatWidget

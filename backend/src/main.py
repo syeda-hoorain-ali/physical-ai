@@ -5,6 +5,7 @@ from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, Response, StreamingResponse
 from .agent import agent
+from .config import settings
 from .services.server import CustomChatKitServer
 from .services.stores import NeonStores
 from .utils.logging_config import setup_logging
@@ -30,6 +31,7 @@ origins = [
     "http://localhost",
     "http://localhost:3000",
     "http://localhost:8080",
+    settings.FRONTEND_BASE_URL,
 ]
 
 app.add_middleware(
@@ -57,40 +59,6 @@ async def chatkit_endpoint(request: Request):
 @app.get("/health")
 async def health():
     return {"status": "ok", "model": "gemini-2.5-flash"}
-
-
-@app.get("/debug/threads")
-async def debug_threads():
-    """Debug endpoint to view all stored threads from database"""
-    try:
-        # Load all threads from the database
-        page_of_threads = await stores.load_threads(limit=100, after=None, order="asc", context={})
-
-        result = {}
-        for thread in page_of_threads.data:
-            # Get messages for each thread
-            messages = await stores.get_thread_messages(thread.id)
-
-            result[thread.id] = {
-                "thread": {
-                    "id": thread.id,
-                    "created_at": str(thread.created_at),
-                    "title": thread.title
-                },
-                "messages": messages,
-                "message_count": len(messages)
-            }
-
-        return result
-    except Exception as e:
-        logger.error(f"Error in debug_threads endpoint: {e}")
-        return {"error": str(e)}
-
-
-# # Serve frontend
-# FRONTEND_DIR = ROOT_DIR / "frontend" / "dist"
-# if FRONTEND_DIR.exists():
-#     app.mount("/", StaticFiles(directory=str(FRONTEND_DIR), html=True), name="frontend")
 
 if __name__ == "__main__":
     import uvicorn
