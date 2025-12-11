@@ -10,12 +10,6 @@
       "excludeFiles": "['../book source/**', '../specs/**', '../history/**']"
     }
   },
-  "builds": [
-    {
-      "src": "./src/main.py",
-      "use": "@vercel/python"
-    }
-  ],
   "routes": [
     {
       "src": "/(.*)",
