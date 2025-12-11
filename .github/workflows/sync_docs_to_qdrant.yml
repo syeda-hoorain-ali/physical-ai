@@ -28,7 +28,9 @@ jobs:
     - name: Navigate to backend and install dependencies
       run: |
         cd backend
-        uv sync
+        python -m pip install --upgrade pip
+        pip install python-dotenv>=1.2.1 beautifulsoup4>=4.14.3 qdrant-client[fastembed]>=1.16.1 markdown>=3.10
+        pip install -r requirements.txt
 
     - name: Run markdown to Qdrant sync
       run: |
