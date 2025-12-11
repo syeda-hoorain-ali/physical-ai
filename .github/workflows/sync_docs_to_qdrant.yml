@@ -1,0 +1,45 @@
+name: Sync Docs to Qdrant
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'book-source/docs/**'
+
+jobs:
+  sync-docs-to-qdrant:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install uv
+      run: |
+        curl -LsSf https://astral.sh/uv/install.sh | sh
+        echo "$HOME/.cargo/bin" >> $GITHUB_PATH
+
+    - name: Navigate to backend and install dependencies
+      run: |
+        cd backend
+        uv sync
+
+    - name: Run markdown to Qdrant sync
+      run: |
+        cd backend
+        python scripts/markdown_to_qdrant.py \
+          --source-dir ../book-source/docs \
+          --collection-name docs_collection \
+          --chunk-size 512 \
+          --overlap 50 \
+          --qdrant-host "${{ secrets.QDRANT_HOST }}" \
+          --qdrant-port 6333 \
+          --qdrant-api-key "${{ secrets.QDRANT_API_KEY }}"
+      env:
+        QDRANT_HOST: ${{ secrets.QDRANT_HOST }}
+        QDRANT_API_KEY: ${{ secrets.QDRANT_API_KEY }}
