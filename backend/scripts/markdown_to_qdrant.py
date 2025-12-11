@@ -90,10 +90,7 @@ def initialize_qdrant_client(host: str = "localhost", port: int = 6333, api_key:
     Initialize and return Qdrant client.
     """
     if api_key:
-        client = QdrantClient(
-            url=f"https://{host}:{port}",
-            api_key=api_key
-        )
+        client = QdrantClient(host=host, port=port, api_key=api_key)
     else:
         client = QdrantClient(host=host, port=port, api_key=os.getenv("QDRANT_API_KEY"))
 
@@ -123,7 +120,7 @@ def create_collection(client: QdrantClient, collection_name: str):
 
 def delete_collection(client: QdrantClient, collection_name: str):
     """
-    Delete Qdrant collection if it exist.
+    Delete Qdrant collection if it exists.
     """
     try:
         client.delete_collection(collection_name)
@@ -167,11 +164,15 @@ def process_markdown_files(
             # Chunk the text
             chunks = chunk_text(text, chunk_size, overlap)
 
-            # Process each chunk
-            for i, chunk in enumerate(chunks):
-                # Generate embedding for the chunk
-                embedding = next(embedding_model.embed([chunk]))
+            # Generate embedding for the chunks
+            if chunks:
+                embeddings = list(embedding_model.embed(chunks))
+            else:
+                embeddings = []
 
+            # Process each chunk
+            for i, chunk in enumerate(embeddings):
+                embedding = embeddings[i]
                 # Create a unique ID for this chunk
                 chunk_id = hashlib.md5(f"{file_path}_{i}".encode()).hexdigest()
 
@@ -188,7 +189,7 @@ def process_markdown_files(
                 # Add point to collection
                 point_struct = models.PointStruct(
                     id=chunk_id,
-                    vector=embedding,
+                    vector=list(embedding),
                     payload=payload
                 )
 
@@ -231,6 +232,7 @@ def main():
     parser.add_argument("--qdrant-api-key", help="Qdrant API key (optional)")
     parser.add_argument("--chunk-size", type=int, default=1000, help="Text chunk size (default: 1000)")
     parser.add_argument("--overlap", type=int, default=100, help="Chunk overlap size (default: 100)")
+    parser.add_argument("--recreate-collection", action="store_true", help="Process files without uploading to Qdrant (for testing)")
     parser.add_argument("--dry-run", action="store_true", help="Process files without uploading to Qdrant (for testing)")
 
     args = parser.parse_args()
@@ -243,8 +245,9 @@ def main():
     if not args.dry_run:
         client = initialize_qdrant_client(args.qdrant_host, args.qdrant_port, args.qdrant_api_key)
 
-        # Delete and recreate collection
-        delete_collection(client, args.collection_name)
+        if args.recreate_collection:
+            # Delete and recreate collection
+            delete_collection(client, args.collection_name)
         create_collection(client, args.collection_name)
     else:
         logger.info("Dry run mode: skipping Qdrant initialization and upload")

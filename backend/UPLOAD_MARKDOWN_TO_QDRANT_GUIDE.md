@@ -29,7 +29,7 @@ uv run backend/scripts/markdown_to_qdrant.py --source-dir <source_directory> --c
 -  `--qdrant-port`: Qdrant port (default: 6333)
 -  `--qdrant-api-key`: Qdrant API key (optional)
 -  `--chunk-size`:  Size of text chunks (default: 1000)
--  `--overlap` Overlap between chunks in characters (default: 100)
+-  `--overlap`: Overlap between chunks in characters (default: 100)
 -  `--dry-run`: Run without uploading to Qdrant (optional flag for testing)
 
 **Example**:

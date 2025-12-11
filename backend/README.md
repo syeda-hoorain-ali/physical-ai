@@ -146,7 +146,7 @@ The markdown to qdrant tool requires these additional dependencies:
 
 Install with:
 ```bash
-pip install qdrant-client[fastembed] markdown beautifulsoup4
+uv sync
 ```
 
 ### Usage
