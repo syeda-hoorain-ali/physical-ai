@@ -2,7 +2,6 @@
 sidebar_position: 1
 label: Introduction to Physical AI and Embodied Intelligence
 slug: introduction-to-physical-ai-and-embodied-intelligence
-proficiency_level: A2
 ---
 
 # Introduction to Physical AI and Embodied Intelligence
