@@ -132,3 +132,53 @@ uv run uvicorn src.main:app --port 8000 --reload
 3. **Port Already in Use**: If you get an address already in use error, change the PORT in your .env file or stop the other process using the port.
 
 4. **SSL/TLS Issues**: Some Neon configurations require specific SSL settings in the connection string.
+
+## Markdown to Qdrant Vector Conversion Tool
+
+This backend also includes a tool to convert markdown files to vector embeddings for semantic search capabilities.
+
+### Installation
+
+The markdown to qdrant tool requires these additional dependencies:
+- qdrant-client[fastembed]
+- markdown
+- beautifulsoup4
+
+Install with:
+```bash
+uv sync
+```
+
+### Usage
+
+```bash
+python scripts/markdown_to_qdrant.py --source-dir <path-to-markdown-directory> --collection-name <qdrant-collection-name> [options]
+```
+
+### Command Line Options
+
+- `--source-dir`: Directory containing markdown files to convert (required)
+- `--collection-name`: Qdrant collection name to store vectors (required)
+- `--qdrant-host`: Qdrant host (default: localhost)
+- `--qdrant-port`: Qdrant port (default: 6333)
+- `--qdrant-api-key`: Qdrant API key (optional)
+- `--chunk-size`: Size of text chunks (default: 1000)
+- `--overlap`: Overlap between chunks (default: 100)
+- `--dry-run`: Process files without uploading to Qdrant (for testing)
+
+### Examples
+
+1. Basic usage:
+```bash
+python scripts/markdown_to_qdrant.py --source-dir ./docs --collection-name my_docs
+```
+
+2. With custom chunk size and overlap:
+```bash
+python scripts/markdown_to_qdrant.py --source-dir ./docs --collection-name my_docs --chunk-size 512 --overlap 50
+```
+
+3. Dry run for testing:
+```bash
+python scripts/markdown_to_qdrant.py --source-dir ./docs --collection-name my_docs --dry-run
+```
