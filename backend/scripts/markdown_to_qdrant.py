@@ -171,8 +171,7 @@ def process_markdown_files(
                 embeddings = []
 
             # Process each chunk
-            for i, chunk in enumerate(embeddings):
-                embedding = embeddings[i]
+            for i, (chunk, embedding) in enumerate(zip(chunks, embeddings)):
                 # Create a unique ID for this chunk
                 chunk_id = hashlib.md5(f"{file_path}_{i}".encode()).hexdigest()
 
@@ -189,7 +188,7 @@ def process_markdown_files(
                 # Add point to collection
                 point_struct = models.PointStruct(
                     id=chunk_id,
-                    vector=list(embedding),
+                    vector=embedding.tolist() if hasattr(embedding, 'tolist') else list(embedding),
                     payload=payload
                 )
 
