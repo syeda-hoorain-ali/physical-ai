@@ -59,7 +59,7 @@ class CustomChatKitServer(ChatKitServer):
             request_context=context,
         )
 
-        print("Context: ", context)
+        logger.debug("Context: %s", context)
 
         # Extract page context from request headers if available
         page_context = ""
