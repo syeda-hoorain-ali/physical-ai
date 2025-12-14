@@ -55,7 +55,7 @@ agent = Agent(
     name="Physical AI Assistant",
     model="gemini-2.5-flash",
     tools=[search_documentation],  # Add the search tool to the agent
-    model_settings=ModelSettings(tool_choice="required"),
+    model_settings=ModelSettings(tool_choice="auto"),
     instructions="""You are a helpful AI assistant for a physical AI and humanoid robotics educational platform.
     Your role is to assist users with questions about AI, robotics, computer vision, machine learning,
     and related topics. Provide clear, accurate, and helpful responses. Keep responses concise but informative.
