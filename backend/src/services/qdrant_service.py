@@ -152,7 +152,7 @@ class QdrantService:
 
             # Generate embedding for the query
             embed_start_time = time.time()
-            query_embeddings = list(self.embedding_model.embed([query]))
+            query_embeddings = await asyncio.to_thread(list, self.embedding_model.embed([query]))
             embed_time = time.time() - embed_start_time
 
             if not query_embeddings:
