@@ -1,3 +1,4 @@
+from typing import Optional
 from openai import AsyncOpenAI
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from agents import set_default_openai_client, set_default_openai_api, set_tracing_disabled
@@ -22,6 +23,12 @@ class Config(BaseSettings):
     # Rate limiting settings (if implemented later)
     RATE_LIMIT_REQUESTS: int = 100
     RATE_LIMIT_WINDOW: int = 3600  # in seconds
+
+    # Qdrant settings
+    QDRANT_HOST: str = "localhost"
+    QDRANT_PORT: int = 6333
+    QDRANT_API_KEY: Optional[str] = None
+    QDRANT_COLLECTION_NAME: str = "docs_collection"
 
     FRONTEND_BASE_URL: str
 
