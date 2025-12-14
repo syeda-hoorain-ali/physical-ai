@@ -138,7 +138,7 @@ class QdrantService:
         Returns:
             List of document chunks with metadata, sorted by relevance
         """
-        start_time = time.time()
+        start_time = asyncio.get_event_loop().time()
 
         try:
             # Check cache first
