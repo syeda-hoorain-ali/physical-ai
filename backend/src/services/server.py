@@ -160,7 +160,7 @@ class CustomChatKitServer(ChatKitServer):
                 # Continue without document context to maintain fallback behavior
         else:
             # No Qdrant service provided, use fallback mode
-            retrieval_info["fallback_model"] = True
+            retrieval_info["fallback_mode"] = True
 
         if document_context:
             # Find the last user message and append document context
