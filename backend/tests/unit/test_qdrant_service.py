@@ -72,6 +72,7 @@ async def test_cache_operations(qdrant_service):
 async def test_search_relevant_chunks_success(qdrant_service):
     """Test successful search for relevant chunks."""
     with patch.object(qdrant_service, 'client') as mock_client:
+        from unittest.mock import AsyncMock
         # Mock search results
         mock_result = Mock()
         mock_result.score = 0.8
@@ -81,7 +82,9 @@ async def test_search_relevant_chunks_success(qdrant_service):
             "file_name": "test_source.md",
             "chunk_index": 1
         }
-        mock_client.search.return_value = [mock_result]
+        mock_response = Mock()
+        mock_response.points = [mock_result]
+        mock_client.query_points = AsyncMock(return_value=mock_response)
 
         results = await qdrant_service.search_relevant_chunks("test query", limit=1)
 
