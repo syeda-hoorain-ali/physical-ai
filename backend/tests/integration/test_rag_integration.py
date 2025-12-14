@@ -241,7 +241,10 @@ async def test_rag_min_similarity_filtering():
     }
 
     with patch.object(qdrant_service, 'client') as mock_client:
-        mock_client.search.return_value = [high_score_result, low_score_result]
+        from unittest.mock import AsyncMock
+        mock_response = Mock()
+        mock_response.points = [high_score_result, low_score_result]
+        mock_client.query_points = AsyncMock(return_value=mock_response)
 
         # Query with 0.3 threshold - should only get high score result
         results = await qdrant_service.search_relevant_chunks("test query", min_similarity=0.3)
