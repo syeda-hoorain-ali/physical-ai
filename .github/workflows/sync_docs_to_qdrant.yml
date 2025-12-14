@@ -13,7 +13,7 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actio ns/checkout@v4
 
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -40,6 +40,7 @@ jobs:
           --collection-name docs_collection \
           --chunk-size 512 \
           --overlap 50 \
+          --recreate-collection \
           --qdrant-host "${{ secrets.QDRANT_HOST }}" \
           --qdrant-port 6333 \
           --qdrant-api-key "${{ secrets.QDRANT_API_KEY }}"

@@ -12,6 +12,9 @@ export const ChatWidget = () => {
   const [initialThread, setInitialThread] = useState<string | null>(null)
   const [isReady, setIsReady] = useState(false)
   const [isChatOpen, setIsChatOpen] = useState(false)
+  const [selectedText, setSelectedText] = useState<string | null>(null)
+  const [selectionPosition, setSelectionPosition] = useState({ x: 0, y: 0, width: 0, height: 0 })
+  const [contextText, setContextText] = useState<string | null>(null)
 
   // Load saved thread ID on mount
   useEffect(() => {
@@ -19,10 +22,71 @@ export const ChatWidget = () => {
     setInitialThread(savedThread)
   }, [])
 
-  const { control, ref } = useChatKit({
+  // Handle text selection
+  useEffect(() => {
+    const handleSelection = () => {
+      const selection = window.getSelection()
+      if (selection && selection.toString().trim() !== '') {
+        // Check if the selection is within the chat component to avoid showing the button there
+        const anchorNode = selection.anchorNode;
+        let isWithinChat = false;
+
+        if (anchorNode) {
+          let parentNode = anchorNode.parentElement;
+          while (parentNode) {
+            if (parentNode.classList && parentNode.classList.contains('chatkit-container')) {
+              isWithinChat = true;
+              break;
+            }
+            parentNode = parentNode.parentElement;
+          }
+        }
+
+        if (!isWithinChat) {
+          const range = selection.getRangeAt(0)
+          const rect = range.getBoundingClientRect()
+          setSelectionPosition({ x: rect.left, y: rect.top - 10, width: rect.width, height: rect.height })
+          setSelectedText(selection.toString())
+        } else {
+          setSelectedText(null)
+        }
+      } else {
+        setSelectedText(null)
+      }
+    }
+
+    document.addEventListener('mouseup', handleSelection)
+    document.addEventListener('keyup', handleSelection)
+
+    return () => {
+      document.removeEventListener('mouseup', handleSelection)
+      document.removeEventListener('keyup', handleSelection)
+    }
+  }, [])
+
+  const { control, ref, fetchUpdates, focusComposer, sendCustomAction, sendUserMessage, setComposerValue, setThreadId } = useChatKit({
     api: {
       url: baseUrl + "/chatkit",
       domainKey: domainKey,
+      fetch: (url: string, options: RequestInit) => {
+        // Get current page information
+        const currentPagePath = window.location.pathname;
+        const pageHeading = document.querySelector('h1')?.textContent?.trim() || 'No heading found';
+
+        // Add custom headers with page context
+        const customOptions = {
+          ...options,
+          headers: {
+            ...options.headers,
+            'X-Page-Path': currentPagePath,
+            'X-Page-Heading': pageHeading,
+            'X-Selected-Text': contextText,
+            'X-Context-Source': 'chat-widget',
+          }
+        };
+
+        return fetch(url, customOptions);
+      }
     },
     initialThread: initialThread,
     theme: {
@@ -55,6 +119,16 @@ export const ChatWidget = () => {
   })
 
 
+  const handleAskWithAI = () => {
+    if (selectedText) {
+      // Set the context text and open the chat
+      setContextText(selectedText);
+      setIsChatOpen(true);
+      // Clear the selection after handling
+      setSelectedText(null);
+    }
+  };
+
   return (<>
     {/* Floating Chat Button (bottom-right) */}
     {!isChatOpen && (
@@ -67,12 +141,30 @@ export const ChatWidget = () => {
       </button>
     )}
 
+    {/* Text Selection Ask with AI Button */}
+    {selectedText && !isChatOpen && (
+      <div
+        className="fixed z-50 -translate-x-1/2 -translate-y-full"
+        style={{
+          left: selectionPosition.x + (selectionPosition.width / 2) + "px",
+          top: selectionPosition.y,
+        }}
+      >
+        <button
+          onClick={handleAskWithAI}
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-linear-to-r from-primary to-secondary text-primary-foreground text-sm font-medium shadow-lg shadow-primary/30 cursor-pointer transition-all duration-200 hover:scale-105 hover:shadow-xl hover:shadow-primary/40 animate-scale-in">
+          <MessageCircle className="w-4 h-4" />
+          <span>Ask AI</span>
+        </button>
+      </div>
+    )}
+
     {/* Chat Popup */}
     <Activity mode={isChatOpen ? "visible" : "hidden"}>
       {/* Backdrop */}
       <div
         onClick={() => setIsChatOpen(false)}
-        className="fixed inset-0 bg-background/60 backdrop-blur-sm z-999"
+        className="fixed inset-0 bg-background/30 z-999"
       />
 
       {/* Popup Window */}
@@ -90,6 +182,7 @@ export const ChatWidget = () => {
             <button
               onClick={() => {
                 localStorage.removeItem('chatkit-thread-id')
+                setThreadId(null)
               }}
               className="px-3 py-1.5 rounded-lg bg-primary/20 hover:bg-primary/30 text-primary text-xs font-medium flex items-center gap-1.5 transition-colors duration-200"
             >
@@ -106,14 +199,30 @@ export const ChatWidget = () => {
           </div>
         </div>
 
+        {/* #chatkit-footer */}
         {/* Chat Content */}
-        <div className="flex-1 overflow-hidden chatkit-container">
+        <div className="flex-1 overflow-hidden chatkit-container flex flex-col">
+          {contextText && (
+            <div className="bg-muted border-b border-border p-3 text-sm flex items-start gap-2">
+              <div className="flex-1">
+                <p className="font-medium text-foreground mb-1">Context from page:</p>
+                <p className="text-muted-foreground line-clamp-2">{contextText}</p>
+              </div>
+              <button
+                onClick={() => setContextText(null)}
+                className="text-muted-foreground hover:text-foreground p-1 rounded-full hover:bg-accent"
+                aria-label="Remove context"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+          )}
           <Activity mode={isReady ? "hidden" : "visible"}>
             <div className="h-full w-full flex items-center justify-center text-muted-foreground text-sm">
               Connecting to assistant...
             </div>
           </Activity>
-          <ChatKit control={control} ref={ref} className="h-full w-full" />
+          <ChatKit control={control} ref={ref} className="flex-1" />
         </div>
       </div>
     </Activity>

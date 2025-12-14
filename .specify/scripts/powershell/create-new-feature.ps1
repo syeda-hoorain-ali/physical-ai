@@ -11,7 +11,7 @@ param(
 )
 $ErrorActionPreference = 'Stop'
 
-# Show help if requested
+`# Show help if requested
 if ($Help) {
     Write-Host "Usage: ./create-new-feature.ps1 [-Json] [-ShortName <name>] [-Number N] <feature description>"
     Write-Host ""
