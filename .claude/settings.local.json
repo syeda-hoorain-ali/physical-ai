@@ -38,6 +38,7 @@
       "Bash(git --version)",
       "Bash(.specify/scripts/powershell/check-prerequisites.ps1:*)",
       "Bash(git rev-parse:*)",
+      "Bash(npm run build)",
       "SlashCommand(/sp.analyze)"
     ],
     "deny": [],

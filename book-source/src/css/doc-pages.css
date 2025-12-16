@@ -6,6 +6,17 @@
  * ============================================================================
  */
 
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.breadcrumbs__link {
+  padding: 1px 8px;
+}
+
 /* ============================================================================
    1. TYPOGRAPHY & READING EXPERIENCE
    ============================================================================ */
@@ -14,7 +25,7 @@
 article {
   max-width: 100%;
   margin: 0 auto;
-  padding-top: 2rem;
+  padding: 2rem 0.5rem 0 1rem;
   position: relative;
   z-index: 5;
 }
@@ -69,10 +80,10 @@ article {
 }
 
 /* Optimal reading width for paragraphs */
-.markdown > p,
-.markdown > ul,
-.markdown > ol,
-.markdown > blockquote {
+.markdown>p,
+.markdown>ul,
+.markdown>ol,
+.markdown>blockquote {
   max-width: 75ch;
 }
 
@@ -313,12 +324,12 @@ article {
 }
 
 /* Custom bullets for unordered lists */
-.markdown ul > li {
+.markdown ul>li {
   list-style: none;
   padding-left: 0.5rem;
 }
 
-.markdown ul > li::before {
+.markdown ul>li::before {
   content: '▸';
   position: absolute;
   left: -1.5rem;
@@ -327,7 +338,7 @@ article {
   font-size: 1.1em;
 }
 
-[data-theme='dark'] .markdown ul > li::before {
+[data-theme='dark'] .markdown ul>li::before {
   color: #AAAAAA;
 }
 
@@ -336,12 +347,12 @@ article {
   counter-reset: item;
 }
 
-.markdown ol > li {
+.markdown ol>li {
   list-style: none;
   counter-increment: item;
 }
 
-.markdown ol > li::before {
+.markdown ol>li::before {
   content: counter(item) ".";
   position: absolute;
   left: -2rem;
@@ -352,13 +363,13 @@ article {
   text-align: right;
 }
 
-[data-theme='dark'] .markdown ol > li::before {
+[data-theme='dark'] .markdown ol>li::before {
   color: #AAAAAA;
 }
 
 /* Nested lists */
-.markdown li > ul,
-.markdown li > ol {
+.markdown li>ul,
+.markdown li>ol {
   margin-top: 0.75rem;
   margin-bottom: 0.75rem;
 }
@@ -527,23 +538,21 @@ article {
   border: none;
   height: 1px;
   background: linear-gradient(90deg,
-    transparent 0%,
-    rgba(0, 31, 63, 0.3) 10%,
-    rgba(0, 31, 63, 0.5) 50%,
-    rgba(0, 31, 63, 0.3) 90%,
-    transparent 100%
-  );
+      transparent 0%,
+      rgba(0, 31, 63, 0.3) 10%,
+      rgba(0, 31, 63, 0.5) 50%,
+      rgba(0, 31, 63, 0.3) 90%,
+      transparent 100%);
   margin: 3rem 0;
 }
 
 [data-theme='dark'] .markdown hr {
   background: linear-gradient(90deg,
-    transparent 0%,
-    rgba(170, 170, 170, 0.2) 10%,
-    rgba(170, 170, 170, 0.3) 50%,
-    rgba(170, 170, 170, 0.2) 90%,
-    transparent 100%
-  );
+      transparent 0%,
+      rgba(170, 170, 170, 0.2) 10%,
+      rgba(170, 170, 170, 0.3) 50%,
+      rgba(170, 170, 170, 0.2) 90%,
+      transparent 100%);
 }
 
 /* ============================================================================
@@ -723,7 +732,7 @@ article {
   color: #003366;
   transition: all 0.2s ease;
   border-left: 2px solid transparent;
-  padding-left: 0.75rem;
+  padding: 0.35rem 0 0.35rem 0.75rem;
 }
 
 [data-theme='dark'] .table-of-contents__link {
