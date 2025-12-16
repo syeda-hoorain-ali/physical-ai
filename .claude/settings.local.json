@@ -38,14 +38,15 @@
       "Bash(git --version)",
       "Bash(.specify/scripts/powershell/check-prerequisites.ps1:*)",
       "Bash(git rev-parse:*)",
-      "Bash(npm run build)"
+      "Bash(npm run build)",
+      "SlashCommand(/sp.analyze)"
     ],
     "deny": [],
     "ask": []
   },
   "enableAllProjectMcpServers": true,
   "enabledMcpjsonServers": [
-    "playwright",
-    "context7"
+    "context7",
+    "playwright"
   ]
 }

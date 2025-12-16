@@ -27,10 +27,10 @@ export const InteractiveHoverButton = ({
         {children}
       </span>
       <ArrowRight className="relative z-10 h-5 w-5 transition-all duration-300 group-hover:translate-x-1" />
-      
+
       {/* Hover background effect */}
       <div className="absolute inset-0 z-0 bg-linear-to-r from-secondary to-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-      
+
       {/* Shine effect */}
       <div className="absolute inset-0 z-0 -translate-x-full bg-linear-to-r from-transparent via-white/20 to-transparent transition-transform duration-500 group-hover:translate-x-full" />
     </button>

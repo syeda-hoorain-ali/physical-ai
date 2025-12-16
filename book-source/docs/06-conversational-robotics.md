@@ -1,3 +1,9 @@
+---
+sidebar_position: 7
+label: Conversational Robotics
+slug: conversational-robotics
+---
+
 # Chapter 06: Conversational Robotics
 
 👋 Hey there, future robot whisperer! Ever dreamed of chatting with a robot just like you do with a friend? Well, get ready because "Conversational Robotics" is where those dreams come true! 🤖💬

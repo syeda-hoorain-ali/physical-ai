@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'book-source/**'
+      - '.github/workflows/deploy-docusaurus.yml'
 
 jobs:
   build:
@@ -26,6 +29,9 @@ jobs:
       - name: Build website
         working-directory: book-source
         run: npm run build
+        env:
+          API_BASE_URL: ${{ secrets.API_BASE_URL }}
+          API_DOMAIN_KEY: ${{ secrets.API_DOMAIN_KEY }}
 
       - name: Upload Build Artifact
         uses: actions/upload-pages-artifact@v3

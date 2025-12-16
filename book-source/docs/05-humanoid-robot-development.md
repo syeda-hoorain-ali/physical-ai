@@ -1,3 +1,9 @@
+---
+sidebar_position: 6
+label: Humanoid Robot Development
+slug: humanoid-robot-development
+---
+
 # Chapter 05: Humanoid Robot Development
 
 Ready to build robots that walk, talk, and interact like us? 🤖 This chapter dives into the fascinating world of humanoid robot development! We'll explore how these incredible machines are designed and brought to life.
