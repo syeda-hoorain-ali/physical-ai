@@ -1,12 +1,15 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
-  "builds": [
-    {
-      "src": "./src/main.py",
-      "use": "@vercel/python"
+  "ignoreCommand": "echo 'Ignoring extra directories'",
+  "functions": {
+    "api/**/*.py": {
+      "excludeFiles": "['../book source/**', '../specs/**', '../history/**']"
+    },
+    "./**/*": {
+      "excludeFiles": "['../book source/**', '../specs/**', '../history/**']"
     }
-  ],
+  },
   "routes": [
     {
       "src": "/(.*)",
