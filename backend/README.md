@@ -13,7 +13,7 @@ This backend service provides a ChatKit-compatible server with Neon PostgreSQL d
 
 ## Prerequisites
 
-- Python 3.13+
+- Python 3.12+
 - Neon PostgreSQL database account
 - Gemini API key
 - `uv` package manager (recommended) or `pip`
