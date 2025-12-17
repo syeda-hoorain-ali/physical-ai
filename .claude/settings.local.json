@@ -39,7 +39,9 @@
       "Bash(.specify/scripts/powershell/check-prerequisites.ps1:*)",
       "Bash(git rev-parse:*)",
       "Bash(npm run build)",
-      "SlashCommand(/sp.analyze)"
+      "SlashCommand(/sp.analyze)",
+      "mcp__vercel__get_deployment_build_logs",
+      "mcp__vercel__list_deployments"
     ],
     "deny": [],
     "ask": []
