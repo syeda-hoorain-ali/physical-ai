@@ -1,16 +1,13 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
-  "builds": [
-    {
-      "src": "backend/src/main.py",
-      "use": "@vercel/python@4.3.1",
-      "config": {
-        "includeFiles": ["backend/src/**", "backend/pyproject.toml", "backend/requirements.txt"],
-        "excludeFiles": "book-source/** specs/** history/**"
-      }
+  "framework": "fastapi",
+  "functions": {
+    "backend/src/main.py": {
+      "runtime": "@vercel/python@4.3.1",
+      "excludeFiles": "book-source/** specs/** history/**"
     }
-  ],
+  },
   "routes": [
     {
       "src": "/(.*)",
