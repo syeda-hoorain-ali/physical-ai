@@ -40,3 +40,5 @@ yarn-error.log*
 .idea/
 *.tmp
 *.swp
+.vercel
+.env*.local

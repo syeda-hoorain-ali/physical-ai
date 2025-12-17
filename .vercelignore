@@ -1,2 +1,10 @@
+# Ignore everything by default
 /*
-!/backend/**
+
+# But include the backend directory
+!/backend
+
+# Exclude specific large directories
+/book-source
+/specs
+/history
