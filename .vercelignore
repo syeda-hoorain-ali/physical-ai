@@ -1,8 +1,8 @@
-# Ignore everything by default
-*
+# # Ignore everything by default
+# *
 
-# But include the backend directory
-!backend/**
+# # But include the backend directory
+# !backend/**
 
 # Exclude specific large directories
 book-source/**
