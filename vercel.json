@@ -10,11 +10,11 @@
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "/backend/src/main.py"
+      "destination": "/backend/src/app.py"
     },
     {
       "source": "/(.*)",
-      "destination": "/backend/src/main.py"
+      "destination": "/backend/src/app.py"
     }
   ]
 }
