@@ -1,0 +1,20 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "version": 2,
+  "ignoreCommand": "echo 'Ignoring extra directories'",
+  "functions": {
+    "backend/src/**/*.py": {
+      "excludeFiles": "book-source/** specs/** history/**"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/backend/src/main.py"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/backend/src/main.py"
+    }
+  ]
+}
