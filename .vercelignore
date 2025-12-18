@@ -5,6 +5,10 @@
 # !backend/**
 
 # Exclude specific large directories
+.claude/**
+.gemini/**
+.specify/**
 book-source/**
 specs/**
 history/**
+physical-ai-and-humanoid-robots-textbook.md
