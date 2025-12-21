@@ -33,6 +33,10 @@ jobs:
           API_BASE_URL: ${{ secrets.API_BASE_URL }}
           API_DOMAIN_KEY: ${{ secrets.API_DOMAIN_KEY }}
 
+      - name: Copy Google verification file
+        working-directory: book-source
+        run: cp googlebd4fb9e44e4d6c50.html build
+
       - name: Upload Build Artifact
         uses: actions/upload-pages-artifact@v3
         with:
