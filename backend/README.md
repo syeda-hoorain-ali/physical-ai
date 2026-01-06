@@ -1,3 +1,12 @@
+---
+title: Physical AI Backend
+emoji: 🤖
+colorFrom: blue
+colorTo: red
+sdk: docker
+pinned: false
+---
+
 # Backend Service for Physical AI Chat Application
 
 This backend service provides a ChatKit-compatible server with Neon PostgreSQL database integration for message and thread persistence. It's designed to work with OpenAI agents and Gemini models for conversational AI applications.
