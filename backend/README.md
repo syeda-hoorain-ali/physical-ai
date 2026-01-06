@@ -4,7 +4,10 @@ emoji: 🤖
 colorFrom: blue
 colorTo: red
 sdk: docker
-pinned: false
+pinned: true
+python_version: 3.12
+app_port: 8000
+short_description: 
 ---
 
 # Backend Service for Physical AI Chat Application
