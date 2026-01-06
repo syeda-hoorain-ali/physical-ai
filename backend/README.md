@@ -7,7 +7,7 @@ sdk: docker
 pinned: true
 python_version: 3.12
 app_port: 8000
-short_description: "FastAPI backend for Physical AI with Gemini integration and Qdrant vector storage"
+short_description: "FastAPI backend with Gemini and Qdrant for Physical AI"
 ---
 
 # Backend Service for Physical AI Chat Application
