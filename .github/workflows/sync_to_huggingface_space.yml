@@ -1,0 +1,46 @@
+name: Sync to Hugging Face hub
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  sync-to-hub:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      # Set up a temporary directory with only the backend contents at root
+      - name: Prepare backend for Hugging Face Spaces
+        run: |
+          mkdir -p hf-space-tmp
+          cp -r backend/* hf-space-tmp/
+          # Ensure the Dockerfile is at the root level for Hugging Face Spaces
+          if [ -f "hf-space-tmp/Dockerfile" ]; then
+            echo "Dockerfile found in backend, using as root Dockerfile"
+          else
+            echo "Error: Dockerfile not found in backend folder"
+            exit 1
+          fi
+
+      # Configure git for Hugging Face
+      - name: Configure git for Hugging Face
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      # Push the backend contents to Hugging Face Spaces
+      - name: Push backend to Hugging Face Spaces
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          cd hf-space-tmp
+          git init
+          git remote add origin https://$GITHUB_REPOSITORY_OWNER:$HF_TOKEN@huggingface.co/spaces/$GITHUB_REPOSITORY_OWNER/${{ github.event.repository.name }}
+          git add .
+          git commit -m "Update backend for Hugging Face Spaces [skip ci]"
+          git push -f origin main
+        

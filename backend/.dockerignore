@@ -1,0 +1,66 @@
+# Python bytecode and cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.coverage
+
+# Virtual environments
+.venv/
+venv/
+
+# Test and coverage artifacts
+test/
+tests/
+*.log
+
+# IDE/editor configs
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Build outputs and temp files
+dist/
+build/
+out/
+tmp/
+temp/
+*.tmp
+
+# Version control
+.git/
+.gitignore
+.svn/
+.hg/
+
+# Environment and secrets
+.env
+.env.*
+*.env
+*.pem
+*.key
+*.crt
+
+# Local and machine-specific config
+.local/
+local/
+config.local.*
+*.local.yml
+
+# Documentation and project meta
+docs/
+*.md
+README*
+API.md
+UPLOAD_MARKDOWN_TO_QDRANT_GUIDE.md
+
+# Docker and Compose files
+Dockerfile*
+docker-compose*
+
+# Logs directory
+logs/
+
+# Ignore nothing else to avoid excluding needed files

@@ -1,0 +1,32 @@
+# Dockerfile for Hugging Face Spaces
+# This template can be used for deploying FastAPI applications to Hugging Face Spaces
+
+FROM python:3.9-slim
+
+# Set working directory
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    gcc \
+    g++ \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy requirements and install Python dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy application code
+COPY . .
+
+# Expose the port that the app runs on
+# Hugging Face Spaces typically uses port 7860 or 8000
+EXPOSE 7860
+
+# Run the application
+# For FastAPI applications, you might use:
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "7860"]
+
+# For other applications, you might use:
+# CMD ["python", "app.py"]
+# CMD ["streamlit", "run", "app.py", "--server.port=7860", "--server.address=0.0.0.0"]
