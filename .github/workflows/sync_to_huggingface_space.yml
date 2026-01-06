@@ -39,7 +39,7 @@ jobs:
         run: |
           cd hf-space-tmp
           git init
-          git remote add origin https://$GITHUB_REPOSITORY_OWNER:$HF_TOKEN@huggingface.co/spaces/$GITHUB_REPOSITORY_OWNER/${{ github.event.repository.name }}
+          git remote add origin https://$GITHUB_REPOSITORY_OWNER:$HF_TOKEN@huggingface.co/spaces/syedahoorainali/physical-ai-backend
           git add .
           git commit -m "Update backend for Hugging Face Spaces [skip ci]"
           git push -f origin main
