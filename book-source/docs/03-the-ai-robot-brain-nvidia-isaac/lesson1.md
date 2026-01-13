@@ -149,7 +149,7 @@ isaac_sim-2023.1.1/isaac-sim-headless.setup
 
 Run the installation script:
 
-```powershell
+```bash
 ./install_dependencies.sh
 ./isaac-sim-headless.setup
 ```
@@ -201,10 +201,6 @@ First, install ROS 2 Humble Hawksbill:
 ![ROS Integration](/img/03-the-ai-robot-brain-nvidia-isaac/ros-integration.png "Isaac ROS Package Integration")
 
 *The above diagram illustrates how Isaac packages integrate with the ROS ecosystem.*
-
-### Setting up ROS 2 Environment
-
-First, install ROS 2 Humble Hawksbill:
 
 :::info[Installing ROS 2 Humble Hawksbill]
 ```bash
@@ -405,16 +401,17 @@ Optimize your system for Isaac Sim performance:
 
 2. Configure system for real-time performance:
    ```bash
+   # Create the realtime group if it doesn't exist
+   sudo groupadd -f realtime
+
    # Add your user to real-time group
    sudo usermod -a -G realtime $USER
+
+   # Set real-time limits
    ulimit -r 99
    ```
 
-   **Output:**
-   ```
-   [sudo] password for user:
-   usermod: group 'realtime' does not exist
-   ```
+   **Note:** If the 'realtime' group doesn't exist, you need to create it first using `groupadd -f realtime`. The `-f` flag ensures the command succeeds even if the group already exists.
 
 ### Activity 2: Isaac Sim Configuration
 

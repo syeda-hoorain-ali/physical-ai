@@ -54,7 +54,7 @@ Humanoid robots are poised to excel in our human-centered world because they sha
 4. Develop with NVIDIA Isaac AI robot platform
 5. Design humanoid robots for natural interactions
 6. Integrate GPT models for conversational robotics
-spss
+
 ## **Weekly Breakdown**
 
 ### **Weeks 1-2: Introduction to Physical AI**

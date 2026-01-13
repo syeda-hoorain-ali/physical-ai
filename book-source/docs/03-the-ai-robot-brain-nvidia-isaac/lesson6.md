@@ -186,10 +186,12 @@ Create `isaac_integration.launch.py`:
 
 ```python title="isaac_integration.launch.py"
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument
+from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
+from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
 from ament_index_python.packages import get_package_share_directory
+import os
 
 def generate_launch_description():
     # Launch configuration
@@ -203,12 +205,16 @@ def generate_launch_description():
         parameters=[{'use_sim_time': use_sim_time}]
     )
 
-    # Isaac navigation node
-    navigation_node = Node(
-        package='nav2_bringup',
-        executable='navigation_launch.py',
-        name='isaac_navigation',
-        parameters=[{'use_sim_time': use_sim_time}]
+    # Isaac navigation launch file
+    nav_launch_file = os.path.join(
+        get_package_share_directory('nav2_bringup'),
+        'launch',
+        'navigation_launch.py'
+    )
+
+    navigation_launch = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(nav_launch_file),
+        launch_arguments={'use_sim_time': use_sim_time}.items()
     )
 
     # Custom integration bridge
@@ -226,7 +232,7 @@ def generate_launch_description():
             description='Use simulation time'
         ),
         perception_node,
-        navigation_node,
+        navigation_launch,
         integration_node
     ])
 ```

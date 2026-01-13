@@ -106,11 +106,10 @@ stage = omni.usd.get_context().get_stage()
 # Create floor
 floor = UsdGeom.Mesh.Define(stage, "/World/Floor")
 floor.CreatePointsAttr([
-    (-5, -5, 0), (5, -5, 0), (5, 5, 0), (-5, 5, 0),
     (-5, -5, 0), (5, -5, 0), (5, 5, 0), (-5, 5, 0)
 ])
-floor.CreateFaceVertexCountsAttr([4, 4])
-floor.CreateFaceVertexIndicesAttr([0, 1, 2, 3, 4, 5, 6, 7])
+floor.CreateFaceVertexCountsAttr([4])
+floor.CreateFaceVertexIndicesAttr([0, 1, 2, 3])
 
 # Create walls
 wall1 = UsdGeom.Mesh.Define(stage, "/World/Wall1")
@@ -211,8 +210,8 @@ Configure realistic physics properties for objects in your simulation. This incl
 ```python title="Configuring Physics Properties for Humanoid Robot"
 from omni.physx import schemas
 
-# Create a rigid body for the robot's torso
-torso_path = "/World/Robot/Torso"
+# Create a rigid body for the robot's torso (defined as Body)
+torso_path = "/World/Robot/Body"
 torso_prim = stage.GetPrimAtPath(torso_path)
 
 # Set rigid body properties
@@ -248,7 +247,7 @@ from omni.isaac.core.utils.prims import create_joint
 shoulder_joint = create_joint(
     prim_path="/World/Robot/ShoulderJoint",
     joint_type="Revolute",
-    body0_path="/World/Robot/Torso",
+    body0_path="/World/Robot/Body",
     body1_path="/World/Robot/UpperArm",
     local_pos0=(0, 0.2, 0.1),
     local_pos1=(0, 0, 0),

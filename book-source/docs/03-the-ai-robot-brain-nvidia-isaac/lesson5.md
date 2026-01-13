@@ -411,6 +411,10 @@ For humanoid navigation, we need custom behavior trees that account for stabilit
 </root>
 ```
 
+:::info[Custom StabilityCheck Node]
+The `<StabilityCheck>` node used in this behavior tree is a custom node designed for humanoid robot stability verification. This is not a standard Nav2 behavior tree node. You will need to implement this custom node in your behavior tree library to perform stability checks before executing navigation commands. The implementation should verify robot stability metrics (e.g., center of mass, ZMP - Zero Moment Point) before allowing navigation to proceed.
+:::
+
 ## Navigation Testing Scenarios
 
 Let's set up several testing scenarios to validate our humanoid navigation system:

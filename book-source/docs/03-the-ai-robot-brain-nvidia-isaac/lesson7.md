@@ -313,7 +313,7 @@ To ensure deployment meets the 25% degradation threshold, establish baseline met
 import time
 import psutil
 import GPUtil
-import rospy
+import rclpy
 from std_msgs.msg import Float32
 
 class PerformanceBenchmark:

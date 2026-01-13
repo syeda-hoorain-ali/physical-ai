@@ -381,7 +381,7 @@ class SLAMEvaluator:
 Set up benchmarks to evaluate your SLAM system:
 
 ```python
-def benchmark_slam_system(mapper, test_sequence, ground_truth):
+def benchmark_slam_system(mapper, test_sequence, ground_truth, camera_intrinsics):
     """Run comprehensive benchmark on SLAM system"""
     evaluator = SLAMEvaluator()
 
@@ -697,24 +697,3 @@ This lesson builds upon the sensor integration and perception concepts from prev
 
 The skills developed in this lesson directly support the chapter's goal of creating autonomous systems capable of understanding and navigating their environment with high precision.
 
-## Image Placeholders
-
-![VSLAM Pipeline Architecture](/img/03-the-ai-robot-brain-nvidia-isaac/vslam-pipeline-architecture.png "Visual SLAM System Architecture")
-
-The VSLAM pipeline architecture diagram illustrates the key components and data flow in a visual SLAM system.
-
-![Feature Detection Example](/img/03-the-ai-robot-brain-nvidia-isaac/feature-detection-example.png "Feature Detection in Visual SLAM")
-
-The feature detection example shows how key points are identified and tracked across successive frames in the SLAM process.
-
-![Mapping Process Visualization](/img/03-the-ai-robot-brain-nvidia-isaac/mapping-process-visualization.png "SLAM Mapping Process")
-
-The mapping process visualization demonstrates how 3D points are reconstructed and integrated into the global map.
-
-![Trajectory Estimation](/img/03-the-ai-robot-brain-nvidia-isaac/trajectory-estimation.png "Estimated vs Ground Truth Trajectory")
-
-The trajectory estimation image compares the estimated robot path with the ground truth trajectory for accuracy assessment.
-
-![Loop Closure Detection](/img/03-the-ai-robot-brain-nvidia-isaac/loop-closure-detection.png "Loop Closure in SLAM")
-
-The loop closure detection diagram illustrates how the system recognizes previously visited locations to correct drift.

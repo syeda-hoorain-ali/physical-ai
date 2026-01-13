@@ -37,7 +37,7 @@ Before starting this lesson, ensure you have:
 
 ## Understanding Isaac ROS Perception Capabilities
 
-Isaac ROS perception packages provide hardware-acelerated computer vision algorithms that leverage NVIDIA GPUs for real-time processing. These packages include:
+Isaac ROS perception packages provide hardware-accelerated computer vision algorithms that leverage NVIDIA GPUs for real-time processing. These packages include:
 
 - **Isaac ROS Image Pipeline**: Optimized image processing with CUDA acceleration
 - **Isaac ROS Stereo Dense Reconstruction**: Real-time 3D reconstruction from stereo cameras
@@ -63,7 +63,7 @@ The Isaac ROS perception stack includes several key packages that provide hardwa
 
 Proper camera configuration is crucial for effective perception. Isaac ROS supports various camera types with hardware acceleration:
 
-```powershell
+```bash
 # Create camera calibration directory
 mkdir -p ~/isaac_ros_ws/src/camera_calibrations
 cd ~/isaac_ros_ws/src/camera_calibrations
