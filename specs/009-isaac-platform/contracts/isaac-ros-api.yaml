@@ -1,0 +1,292 @@
+# Isaac ROS API Contract
+# This contract defines the interfaces for Isaac ROS perception and navigation components
+
+openapi: 3.0.0
+info:
+  title: Isaac ROS API
+  description: API contract for Isaac ROS perception and navigation components
+  version: 1.0.0
+  contact:
+    name: NVIDIA Isaac Team
+    url: https://developer.nvidia.com/isaac-ros
+    email: isaac-ros@nvidia.com
+
+servers:
+  - url: http://localhost:8080
+    description: Local Isaac ROS node server
+
+paths:
+  /perception/vslam:
+    post:
+      summary: Process visual SLAM from stereo camera inputs
+      description: Takes stereo camera images and generates visual SLAM data
+      requestBody:
+        required: true
+        content:
+          application/octet-stream:
+            schema:
+              type: object
+              properties:
+                left_image:
+                  type: string
+                  format: binary
+                  description: Left camera image in stereo pair
+                right_image:
+                  type: string
+                  format: binary
+                  description: Right camera image in stereo pair
+                camera_info:
+                  type: object
+                  description: Camera calibration and metadata
+      responses:
+        '200':
+          description: Successfully processed VSLAM data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  pose:
+                    type: object
+                    description: Robot pose in world coordinates
+                    properties:
+                      x:
+                        type: number
+                        format: float
+                      y:
+                        type: number
+                        format: float
+                      z:
+                        type: number
+                        format: float
+                      orientation:
+                        type: object
+                        properties:
+                          w:
+                            type: number
+                            format: float
+                          x:
+                            type: number
+                            format: float
+                          y:
+                            type: number
+                            format: float
+                          z:
+                            type: number
+                            format: float
+                  map:
+                    type: object
+                    description: Generated 3D map of environment
+                    properties:
+                      points:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            x:
+                              type: number
+                              format: float
+                            y:
+                              type: number
+                              format: float
+                            z:
+                              type: number
+                              format: float
+                            intensity:
+                              type: number
+                              format: float
+      tags:
+        - perception
+        - vslam
+
+  /navigation/plan:
+    post:
+      summary: Plan navigation path for humanoid robot
+      description: Computes a navigation plan for a humanoid robot from start to goal
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - start_pose
+                - goal_pose
+                - robot_config
+              properties:
+                start_pose:
+                  $ref: '#/components/schemas/Pose'
+                goal_pose:
+                  $ref: '#/components/schemas/Pose'
+                robot_config:
+                  $ref: '#/components/schemas/RobotConfig'
+                environment:
+                  type: string
+                  description: Environment map for path planning
+      responses:
+        '200':
+          description: Successfully computed navigation plan
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  plan_id:
+                    type: string
+                    description: Unique identifier for the navigation plan
+                  waypoints:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Pose'
+                  footstep_plan:
+                    type: array
+                    description: For bipedal robots, the planned sequence of foot placements
+                    items:
+                      type: object
+                      properties:
+                        left_foot:
+                          $ref: '#/components/schemas/Pose'
+                        right_foot:
+                          $ref: '#/components/schemas/Pose'
+                        step_time:
+                          type: number
+                          format: float
+                          description: Time for this step
+                  execution_time:
+                    type: number
+                    format: float
+                    description: Time taken to compute the plan
+        '400':
+          description: Invalid input parameters
+        '500':
+          description: Internal server error during path planning
+      tags:
+        - navigation
+        - path-planning
+
+  /simulation/control:
+    post:
+      summary: Control simulation environment
+      description: Send commands to control the simulation environment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                command:
+                  type: string
+                  enum: [start, stop, pause, resume]
+                  description: Simulation control command
+                environment:
+                  type: string
+                  description: Name of the environment to control
+      responses:
+        '200':
+          description: Successfully executed simulation command
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: Current simulation status
+                  message:
+                    type: string
+                    description: Additional status information
+        '400':
+          description: Invalid simulation command
+      tags:
+        - simulation
+        - control
+
+components:
+  schemas:
+    Pose:
+      type: object
+      required:
+        - position
+        - orientation
+      properties:
+        position:
+          type: object
+          required: [x, y, z]
+          properties:
+            x:
+              type: number
+              format: float
+            y:
+              type: number
+              format: float
+            z:
+              type: number
+              format: float
+        orientation:
+          type: object
+          required: [w, x, y, z]
+          properties:
+            w:
+              type: number
+              format: float
+            x:
+              type: number
+              format: float
+            y:
+              type: number
+              format: float
+            z:
+              type: number
+              format: float
+
+    RobotConfig:
+      type: object
+      required:
+        - robot_model
+        - base_frame
+      properties:
+        robot_model:
+          type: string
+          description: Name of the robot model to use
+        base_frame:
+          type: string
+          description: Base frame for the robot
+        joint_limits:
+          type: object
+          description: Joint limits for the robot
+        footprint:
+          type: object
+          description: Robot footprint for navigation
+          properties:
+            radius:
+              type: number
+              format: float
+              description: Radius of the robot's circular footprint
+            points:
+              type: array
+              items:
+                type: object
+                properties:
+                  x:
+                    type: number
+                    format: float
+                  y:
+                    type: number
+                    format: float
+              description: Points defining the robot's polygon footprint
+
+tags:
+  - name: perception
+    description: Perception-related endpoints (SLAM, object detection, etc.)
+  - name: navigation
+    description: Navigation-related endpoints (path planning, control, etc.)
+  - name: simulation
+    description: Simulation control and management endpoints
+
+security:
+  - api_key: []
+  - jwt: []
+
+# Note: This is a simplified contract. The actual Isaac ROS implementation uses ROS 2 topics and services
+# rather than REST APIs, but this contract represents the conceptual interfaces.

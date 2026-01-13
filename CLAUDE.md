@@ -210,9 +210,9 @@ Wait for consent; never auto-create ADRs. Group related decisions (stacks, authe
 ## Code Standards
 See `.specify/memory/constitution.md` for code quality, testing, performance, security, and architecture principles.
 
-## Docusaurus Formatting Tips
+## Docusaurus Formatting Guidelines
 
-Here are some tips for Docusaurus markdown formatting:
+Here are the guidelines for Docusaurus markdown formatting:
 
 - Use `<details>` & `<summary>` HTML tags within Markdown to create collapsible sections.
 - Use comments with `// highlight-next-line`, `// highlight-start`, and `// highlight-end` to select which lines are highlighted in code blocks. This method is flexible as it adapts to code changes.
