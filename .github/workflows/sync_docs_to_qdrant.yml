@@ -6,6 +6,8 @@ on:
     paths:
       - 'book-source/docs/**'
       - '.github/workflows/sync_docs_to_qdrant.yml'
+      - 'backend/scripts/markdown_to_qdrant.py'
+      - 'backend/requirements.txt'
 
 jobs:
   sync-docs-to-qdrant:
