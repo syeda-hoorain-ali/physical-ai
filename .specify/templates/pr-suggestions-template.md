@@ -60,23 +60,6 @@ This document tracks code review suggestions from PR #<PR_NUMBER>. Each suggesti
 <!-- Add notes here after applying the suggestion -->
 ---
 
-## Progress Summary
-
-### ✅ Completed Suggestions
-<!-- Automatically updated as suggestions are completed -->
-
-- None yet
-
-### 🔄 In Progress
-
-- All suggestions pending
-
-### ❌ Skipped/Rejected
-
-- None
-
----
-
 ## Final Summary
 
 **Status**: ⏳ In Progress
@@ -88,6 +71,9 @@ This document tracks code review suggestions from PR #<PR_NUMBER>. Each suggesti
 - [ ] Changes committed locally
 - [ ] Changes pushed to remote
 - [ ] Tracking file updated
+
+**Skipped/Rejected:**
+- None
 
 **Commit Details:**
 - **Commit Hash**: `<COMMIT_HASH>` (will be filled after commit)
